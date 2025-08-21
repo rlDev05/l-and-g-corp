@@ -10,8 +10,8 @@ import { useState, useEffect } from "react";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/#company-profile" },
+  { name: "Values", href: "/core-values" },
   { name: "Services", href: "/services" },
-  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -78,8 +78,8 @@ export default function Navigation() {
               </div>
               <span
                 className={cn(
-                  "text-xl lg:text-2xl font-semibold",
-                  isScrolled ? "text-card-foreground" : "text-white"
+                  "text-xl lg:text-2xl font-semibold transition-all duration-300",
+                  isScrolled ? "text-black" : "text-white"
                 )}
               >
                 L&G Energy
@@ -112,19 +112,26 @@ export default function Navigation() {
                       }
                     }}
                     className={cn(
-                      "px-6 py-3 rounded-xl text-sm lg:text-base font-medium transition-all duration-300 relative group",
-                      (isActive || (item.name === "About" && activeSection === "about"))
-                        ? "bg-primary text-primary-foreground shadow-lg"
-                        : isScrolled
-                          ? "text-card-foreground hover:text-primary hover:bg-accent/50"
-                          : "text-white hover:text-primary/80 hover:bg-white/10",
+                      "px-6 py-3 text-sm lg:text-base font-medium transition-all duration-300 relative group",
+                      isScrolled
+                        ? "text-black hover:text-primary"
+                        : "text-white hover:text-primary/80",
                     )}
                     style={{
-                      backgroundColor: (isActive || (item.name === "About" && activeSection === "about")) ? 'var(--color-primary)' : 'transparent',
-                      color: (isActive || (item.name === "About" && activeSection === "about")) ? 'var(--color-primary-foreground)' : 'inherit'
+                      color: (isActive || (item.name === "About" && activeSection === "about")) 
+                        ? 'var(--color-primary)' 
+                        : isScrolled ? 'inherit' : 'white'
                     }}
                   >
                     {item.name}
+                    <span
+                      className={cn(
+                        "absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300",
+                        (isActive || (item.name === "About" && activeSection === "about"))
+                          ? "bg-primary"
+                          : "bg-transparent group-hover:bg-primary/50"
+                      )}
+                    />
                   </Link>
                 );
               })}
@@ -143,19 +150,19 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "block w-6 h-0.5 transition-all duration-300",
-                    isScrolled ? "bg-card-foreground" : "bg-white",
+                    isScrolled ? "bg-black" : "bg-white",
                   )}
                 ></span>
                 <span
                   className={cn(
                     "block w-6 h-0.5 transition-all duration-300",
-                    isScrolled ? "bg-card-foreground" : "bg-white",
+                    isScrolled ? "bg-black" : "bg-white",
                   )}
                 ></span>
                 <span
                   className={cn(
                     "block w-6 h-0.5 transition-all duration-300",
-                    isScrolled ? "bg-card-foreground" : "bg-white",
+                    isScrolled ? "bg-black" : "bg-white",
                   )}
                 ></span>
               </div>
@@ -187,16 +194,27 @@ export default function Navigation() {
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={cn(
-                  "block px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300",
-                  isActive
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : isScrolled
-                      ? "text-card-foreground hover:text-primary hover:bg-accent/50"
-                      : "text-white hover:text-primary/80 hover:bg-white/10",
+                  "block px-4 py-3 text-lg font-medium transition-all duration-300 relative group",
+                  isScrolled
+                    ? "text-black hover:text-primary"
+                    : "text-white hover:text-primary/80",
                 )}
-              >
-                {item.name}
-              </Link>
+                style={{
+                  color: isActive 
+                    ? 'var(--color-primary)' 
+                    : isScrolled ? 'inherit' : 'white'
+                }}
+                              >
+                  {item.name}
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300",
+                      isActive
+                        ? "bg-primary"
+                        : "bg-transparent group-hover:bg-primary/50"
+                    )}
+                  />
+                </Link>
             );
           })}
         </div>
