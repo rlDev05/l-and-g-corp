@@ -14,42 +14,42 @@ const products = [
     id: "lpg",
     title: "Liquefied Petroleum Gas (LPG)",
     description: "Safe and efficient energy for households, commercial kitchens, and industrial operations.",
-    image: "/products/lpg-tank.jpg",
+    image: "/products/lpg.jpg",
     category: "products"
   },
   {
     id: "gasoline",
     title: "Gasoline (Petrol)",
     description: "Premium quality fuel for cars, motorcycles, and light vehicles.",
-    image: "/products/gasoline.jpg",
+    image: "/products/petrol.jpg",
     category: "products"
   },
   {
     id: "diesel",
     title: "Automotive Diesel Oil (ADO)",
     description: "Dependable fuel for trucks, buses, heavy equipment, and diesel-powered engines.",
-    image: "/products/diesel.jpg",
+    image: "/products/ado.webp",
     category: "products"
   },
   {
     id: "jet-fuel",
     title: "Jet A-1",
     description: "Aviation-grade turbine fuel, refined to international standards for safety and performance.",
-    image: "/products/jet-fuel.jpg",
+    image: "/products/jet1.jpg",
     category: "products"
   },
   {
     id: "crude-oil",
     title: "Crude Oil",
     description: "Supply and trading for industrial partners and refineries.",
-    image: "/products/crude-oil.jpg",
+    image: "/products/crude.jpg",
     category: "products"
   },
   {
     id: "petroleum-fuels",
     title: "Petroleum & Other Fuels",
     description: "Wholesale and retail distribution of solid, liquid, and gaseous fuels.",
-    image: "/products/petroleum.jpg",
+    image: "/products/petrolandother.jpg",
     category: "products"
   }
 ];
@@ -59,14 +59,14 @@ const services = [
     id: "retail",
     title: "Retail Distribution",
     description: "LPG and other fuel products delivered with safety and reliability.",
-    image: "/services/retail-distribution.jpg",
+    image: "/services/retail.jpg",
     category: "services"
   },
   {
     id: "wholesale",
     title: "Wholesale Supply",
     description: "Bulk distribution of solid, liquid, and gaseous fuels to businesses and industries.",
-    image: "/services/wholesale-supply.jpg",
+    image: "/services/wholesale.jpg",
     category: "services"
   },
   {
@@ -157,7 +157,7 @@ export default function WhatWeOffer() {
               At L&G Energy Corp., we are committed to powering homes, businesses, and industries with reliable energy solutions. Through our extensive network and expertise in the fuel industry, we provide high-quality products and services designed to meet diverse energy needs.
             </p>
             <div className="text-xl sm:text-2xl font-bold text-card-foreground">
-              ✨ L&G Energy Corp. is your trusted partner in energy — delivering quality, safety, and efficiency in every drop.
+              L&G Energy Corp. is your trusted partner in energy — delivering quality, safety, and efficiency in every drop.
             </div>
           </div>
         </div>
@@ -236,7 +236,18 @@ export default function WhatWeOffer() {
                     className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-card overflow-hidden"
                   >
                     <div className="aspect-video bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center overflow-hidden">
-                      <div className="text-4xl opacity-20">
+                      <img 
+                        src={product.image} 
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback to emoji if image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('opacity-20');
+                        }}
+                      />
+                      <div className="text-4xl opacity-20 absolute">
                         {product.id === "lpg" && "🔥"}
                         {product.id === "gasoline" && "⛽"}
                         {product.id === "diesel" && "🚛"}
@@ -283,7 +294,18 @@ export default function WhatWeOffer() {
                     className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-card overflow-hidden"
                   >
                     <div className="aspect-video bg-gradient-to-br from-green-50 to-gray-100 flex items-center justify-center overflow-hidden">
-                      <div className="text-4xl opacity-20">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback to emoji if image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('opacity-20');
+                        }}
+                      />
+                      <div className="text-4xl opacity-20 absolute">
                         {service.id === "retail" && "🏪"}
                         {service.id === "wholesale" && "📦"}
                         {service.id === "trading" && "🌍"}
