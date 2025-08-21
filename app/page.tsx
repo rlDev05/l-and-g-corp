@@ -81,7 +81,7 @@ export default function Home() {
             <div className="relative group">
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-sm mx-auto">
                 <Image
-                  src="/background/hero-bg.jpg"
+                  src="/background/company-image.jpg"
                   alt="L&G Corporation Office"
                   width={300}
                   height={300}
@@ -105,7 +105,7 @@ export default function Home() {
             <div className="relative group order-2 lg:order-1">
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-md mx-auto">
                 <Image
-                  src="/background/bg-2.png"
+                  src="/logo/l-and-g-corp-logo.jpg"
                   alt="L&G Energy Operations"
                   width={400}
                   height={400}
