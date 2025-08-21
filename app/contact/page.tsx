@@ -6,7 +6,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-secondary/5 pt-20 lg:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
             <div className="space-y-4">
