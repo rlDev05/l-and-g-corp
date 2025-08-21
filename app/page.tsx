@@ -177,8 +177,8 @@ export default function Home() {
                 <div className="relative mb-8">
                   <div className="w-64 h-64 mx-auto rounded-full overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 ring-4 ring-primary/20 group-hover:ring-primary/40">
                     <Image
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                      alt="David Rodriguez - VP of Technology"
+                      src="/members/sir-rayner.png"
+                      alt="Sir Rayner - VP of Technology"
                       width={256}
                       height={256}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -190,7 +190,7 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-                <h4 className="text-xl font-semibold text-card-foreground mb-2">David Rodriguez</h4>
+                <h4 className="text-xl font-semibold text-card-foreground mb-2">Sir Rayner</h4>
                 <p className="text-primary font-medium mb-4">Vice President of Technology</p>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
                   Leading our technology initiatives with over 12 years of experience in software development 
@@ -203,8 +203,8 @@ export default function Home() {
                 <div className="relative mb-8">
                   <div className="w-64 h-64 mx-auto rounded-full overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 ring-4 ring-primary/20 group-hover:ring-primary/40">
                     <Image 
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
-                      alt="Emily Thompson - VP of Operations"
+                      src="/members/sir-arran.jpg"
+                      alt="Sir Arran - VP of Operations"
                       width={256}
                       height={256}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -216,7 +216,7 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-                <h4 className="text-xl font-semibold text-card-foreground mb-2">Emily Thompson</h4>
+                <h4 className="text-xl font-semibold text-card-foreground mb-2">Sir Arran</h4>
                 <p className="text-primary font-medium mb-4">Vice President of Operations</p>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
                   Overseeing operational excellence and client success with 10+ years in business operations. 
