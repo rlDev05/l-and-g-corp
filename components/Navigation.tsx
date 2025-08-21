@@ -18,11 +18,35 @@ export default function Navigation() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
+      
+      // Check if we're on the home page
+      if (window.location.pathname === '/') {
+        const companyProfileSection = document.getElementById('company-profile');
+        if (companyProfileSection) {
+          const rect = companyProfileSection.getBoundingClientRect();
+          const isInView = rect.top <= 150; // Simplified detection
+          
+          console.log('About section detection:', { 
+            rectTop: rect.top, 
+            isInView, 
+            activeSection: activeSection 
+          });
+          
+          if (isInView) {
+            setActiveSection('about');
+          } else {
+            setActiveSection('');
+          }
+        }
+      } else {
+        setActiveSection('');
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -67,19 +91,38 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-2">
               {navigation.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname === item.href && !(item.name === "Home" && activeSection === "about");
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => {
+                      if (item.name === "About") {
+                        e.preventDefault();
+                        // Check if we're on the home page
+                        if (window.location.pathname === '/') {
+                          const element = document.getElementById('company-profile');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        } else {
+                          // Navigate to home page with anchor
+                          window.location.href = '/#company-profile';
+                        }
+                      }
+                    }}
                     className={cn(
                       "px-6 py-3 rounded-xl text-sm lg:text-base font-medium transition-all duration-300 relative group",
-                      isActive
+                      (isActive || (item.name === "About" && activeSection === "about"))
                         ? "bg-primary text-primary-foreground shadow-lg"
                         : isScrolled
                           ? "text-card-foreground hover:text-primary hover:bg-accent/50"
                           : "text-white hover:text-primary/80 hover:bg-white/10",
                     )}
+                    style={{
+                      backgroundColor: (isActive || (item.name === "About" && activeSection === "about")) ? 'var(--color-primary)' : 'transparent',
+                      color: (isActive || (item.name === "About" && activeSection === "about")) ? 'var(--color-primary-foreground)' : 'inherit'
+                    }}
                   >
                     {item.name}
                   </Link>
