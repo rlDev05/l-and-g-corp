@@ -25,7 +25,7 @@ export default function CoreValues() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/background/bg-2.png')",
+            backgroundImage: "url('/background/bg-6.jpg')",
           }}
         />
 
