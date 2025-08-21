@@ -11,7 +11,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/#company-profile" },
   { name: "Values", href: "/core-values" },
-  { name: "Services", href: "/services" },
+  { name: "What We Offer", href: "/what-we-offer" },
 ];
 
 export default function Navigation() {
