@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/#company-profile" },
   { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
 ];
@@ -54,7 +54,7 @@ export default function Navigation() {
               </div>
               <span
                 className={cn(
-                  "text-2xl lg:text-3xl font-semibold",
+                  "text-xl lg:text-2xl font-semibold",
                   isScrolled ? "text-card-foreground" : "text-white"
                 )}
               >
@@ -73,7 +73,7 @@ export default function Navigation() {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      "px-6 py-3 rounded-xl text-base lg:text-lg font-medium transition-all duration-300 relative group",
+                      "px-6 py-3 rounded-xl text-sm lg:text-base font-medium transition-all duration-300 relative group",
                       isActive
                         ? "bg-primary text-primary-foreground shadow-lg"
                         : isScrolled

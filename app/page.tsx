@@ -18,10 +18,10 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
             Powering the Philippines&apos; <br /> Energy Future.
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
             Leading Philippine energy trading company specializing in fuel
             products and gaseous fuels. We support key industries with reliable,
             efficient energy solutions.
@@ -74,13 +74,13 @@ export default function Home() {
       </section>
 
       {/* Company Profile Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-card">
+      <section id="company-profile" className="py-16 sm:py-20 lg:py-24 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text Content */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-card-foreground">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
                   Company{" "}
                   <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                     Profile
@@ -89,44 +89,37 @@ export default function Home() {
                 <div className="w-20 h-1 bg-primary rounded-full"></div>
               </div>
               <div className="space-y-6 text-muted-foreground">
-                <p className="text-lg leading-relaxed">
-                  L&G Corporation is a leading technology company dedicated to
-                  transforming businesses through innovative solutions. With
-                  over 15 years of experience, we have established ourselves as
-                  a trusted partner for organizations seeking digital
-                  transformation and technological advancement.
+                <p className="text-base leading-relaxed text-justify">
+                  L&G Energy Corp is a Philippine-based energy trading company established in 2025. We specialize in the import, export, and wholesale distribution of fuel products and gaseous fuels. With a strong focus on reliability, operational efficiency, and long-term partnerships, we aim to support the energy demands of key industries such as transportation, manufacturing, construction, and power generation.
                 </p>
-                <p className="text-lg leading-relaxed">
-                  Our comprehensive portfolio spans across multiple industries,
-                  delivering cutting-edge solutions that drive real business
-                  value. We pride ourselves on our commitment to excellence,
-                  innovation, and client satisfaction.
+                <p className="text-base leading-relaxed text-justify">
+                We are committed to delivering safe, high-quality fuel solutions across the country and are continuously expanding our network of storage, logistics, and distribution channels. Backed by a team of experienced professionals and a growing base of satisfied clients, L&G Energy Corp strives to become a trusted partner in the Philippine energy sector.
                 </p>
               </div>
 
               {/* Key Statistics */}
               <div className="grid grid-cols-3 gap-6 pt-8">
                 <div className="text-center group">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
                     15+
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">
+                  <div className="text-xs text-muted-foreground font-medium">
                     Years Experience
                   </div>
                 </div>
                 <div className="text-center group">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
                     500+
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">
+                  <div className="text-xs text-muted-foreground font-medium">
                     Happy Clients
                   </div>
                 </div>
                 <div className="text-center group">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
                     1000+
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">
+                  <div className="text-xs text-muted-foreground font-medium">
                     Projects Completed
                   </div>
                 </div>
@@ -135,18 +128,18 @@ export default function Home() {
 
             {/* Image */}
             <div className="relative group">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-md mx-auto">
                 <Image
                   src="/background/hero-bg.jpg"
                   alt="L&G Corporation Office"
-                  width={600}
-                  height={600}
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
               {/* Decorative elements */}
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-secondary rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute -top-3 -left-3 w-12 h-12 bg-secondary rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
             </div>
           </div>
         </div>
@@ -158,7 +151,7 @@ export default function Home() {
           {/* Text Content */}
           <div className="text-center mb-16 lg:mb-20">
             <div className="space-y-4 mb-12">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-card-foreground">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
                 About{" "}
                 <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   L&G Corporation
@@ -167,12 +160,12 @@ export default function Home() {
               <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
             </div>
             <div className="max-w-4xl mx-auto space-y-6 text-muted-foreground">
-              <p className="text-lg leading-relaxed">
+              <p className="text-base leading-relaxed">
                 Founded with a vision to transform businesses through innovative
                 technology solutions, L&G Corporation has been at the forefront
                 of digital transformation for over a decade.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-base leading-relaxed">
                 Our team of experienced professionals combines deep industry
                 knowledge with cutting-edge technology to deliver solutions that
                 drive real business value. We believe in building lasting
@@ -190,7 +183,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 lg:mb-20">
             <div className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-card-foreground">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
                 Our{" "}
                 <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   Core Team
@@ -198,7 +191,7 @@ export default function Home() {
               </h2>
               <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
             </div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-8">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-8">
               Meet the talented professionals who drive our success and
               innovation
             </p>
@@ -206,7 +199,7 @@ export default function Home() {
           {/* Vice Presidents */}
           <div className="text-center">
             <div className="space-y-4 mb-12">
-              <h3 className="text-2xl sm:text-3xl font-bold text-card-foreground">
+              <h3 className="text-xl sm:text-2xl font-bold text-card-foreground">
                 Meet Our{" "}
                 <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   Vice Presidents
@@ -241,13 +234,13 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-                <h4 className="text-xl font-semibold text-card-foreground mb-2">
+                <h4 className="text-lg font-semibold text-card-foreground mb-2">
                   Sir Rayner
                 </h4>
                 <p className="text-primary font-medium mb-4">
                   Vice President of Technology
                 </p>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
+                <p className="text-muted-foreground text-xs leading-relaxed max-w-sm mx-auto">
                   Leading our technology initiatives with over 12 years of
                   experience in software development and digital innovation.
                   Expert in cloud architecture and emerging technologies.
@@ -280,13 +273,13 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-                <h4 className="text-xl font-semibold text-card-foreground mb-2">
+                <h4 className="text-lg font-semibold text-card-foreground mb-2">
                   Sir Arran
                 </h4>
                 <p className="text-primary font-medium mb-4">
                   Vice President of Operations
                 </p>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
+                <p className="text-muted-foreground text-xs leading-relaxed max-w-sm mx-auto">
                   Overseeing operational excellence and client success with 10+
                   years in business operations. Specializes in process
                   optimization and strategic planning.
