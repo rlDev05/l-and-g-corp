@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -74,34 +75,87 @@ export default function CoreValues() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section id="mission-vision" className="py-20 bg-gray-50">
+      <section id="mission-vision" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-card via-card to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection delay={200} duration={800}>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Company Mission and Vision
-              </h2>
-              <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+            {/* Company Mission and Vision - Takes up 2 columns */}
+            <div className="lg:col-span-2">
+              <FadeInSection delay={200} duration={800}>
+                <div className="space-y-6 lg:pt-16">
+                  <div className="space-y-3">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
+                      Mission and Vision
+                    </h2>
+                    <div className="w-20 h-1 bg-primary rounded-full"></div>
+                  </div>
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-base leading-relaxed text-justify">
+                      L&G Energy Corp aims to become a nationally recognized company with the capability to compete at the international level — known for its reliability and excellence in providing logistics and fuel oil solutions.
+                    </p>
+                    <p className="text-base leading-relaxed text-justify">
+                      We envision a company that is both nationally and globally competitive, achieving sustainable income and profitability, backed by strong management that upholds global standards and best practices. Our operations are built on quality, efficiency, and integrity.
+                    </p>
+                    <p className="text-base leading-relaxed text-justify">
+                      Through reliable land and sea logistics, L&G Energy Corp ensures timely and efficient delivery, supported by a well-structured and dependable operational system — earning the trust of partners and clients across all markets we serve.
+                    </p>
+                  </div>
+                </div>
+              </FadeInSection>
             </div>
-          </FadeInSection>
-          
-          <FadeInSection delay={400} duration={800}>
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-8 text-justify">
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  L&G Energy Corp aims to become a nationally recognized company with the capability to compete at the international level — known for its reliability and excellence in providing logistics and fuel oil solutions.
-                </p>
-                
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  We envision a company that is both nationally and globally competitive, achieving sustainable income and profitability, backed by strong management that upholds global standards and best practices. Our operations are built on quality, efficiency, and integrity.
-                </p>
-                
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Through reliable land and sea logistics, L&G Energy Corp ensures timely and efficient delivery, supported by a well-structured and dependable operational system — earning the trust of partners and clients across all markets we serve.
-                </p>
-              </div>
+
+            {/* Team Members - Takes up 1 column */}
+            <div className="lg:col-span-1">
+              <FadeInSection delay={400} duration={800}>
+                <div className="space-y-8">
+                  {/* President */}
+                  <div className="text-center group">
+                    <div className="relative mb-6">
+                      <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 ring-2 ring-primary/20 group-hover:ring-primary/40">
+                        <Image
+                          src="/members/sir-rayner.png"
+                          alt="Rayner C. Lorenzo - President"
+                          width={192}
+                          height={192}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-lg font-bold text-card-foreground">
+                        Rayner C. Lorenzo
+                      </h4>
+                      <p className="text-primary font-semibold text-base">
+                        President
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Vice President */}
+                  <div className="text-center group">
+                    <div className="relative mb-6">
+                      <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 ring-2 ring-primary/20 group-hover:ring-primary/40">
+                        <Image
+                          src="/members/sir-arran.jpg"
+                          alt="Arran Lester P. Galvan - Vice President"
+                          width={192}
+                          height={192}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-lg font-bold text-card-foreground">
+                        Arran Lester P. Galvan
+                      </h4>
+                      <p className="text-primary font-semibold text-base">
+                        Vice President
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </FadeInSection>
             </div>
-          </FadeInSection>
+          </div>
         </div>
       </section>
      </div>

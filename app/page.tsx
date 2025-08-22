@@ -98,9 +98,6 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-primary rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                <div className="absolute -top-2 -left-2 w-8 h-8 bg-secondary rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
               </div>
             </FadeInSection>
           </div>
@@ -123,9 +120,6 @@ export default function Home() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div className="absolute -top-3 -left-3 w-12 h-12 bg-secondary rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
             </div>
 
             {/* Text Content */}
@@ -143,78 +137,6 @@ export default function Home() {
                 <p className="text-base leading-relaxed">
                 Established in 2025, we are a Philippine-based energy trading company specializing in the import, export, and wholesale distribution of fuel products and gaseous fuels. Our focus on reliability, operational efficiency, and long-term partnerships supports the energy demands of key industries.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Team Members Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-card via-card to-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 lg:mb-20">
-            <div className="space-y-4">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
-                Our{" "}
-                <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                  Core Team
-                </span>
-              </h2>
-              <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
-            </div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-8 leading-relaxed">
-              Meet the talented professionals who drive our success and
-              innovation with their expertise and dedication
-            </p>
-          </div>
-          
-          {/* Vice Presidents */}
-          <div className="text-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-12 max-w-6xl mx-auto">
-              {/* VP 1 */}
-              <div className="text-center group">
-                <div className="relative mb-8">
-                  <div className="w-72 h-72 mx-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 ring-4 ring-primary/20 group-hover:ring-primary/40 bg-gradient-to-br from-primary/5 to-primary/10">
-                    <Image
-                      src="/members/sir-rayner.png"
-                      alt="Sir Rayner - VP of Technology"
-                      width={288}
-                      height={288}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="text-xl font-bold text-card-foreground">
-                    Rayner C. Lorenzo
-                  </h4>
-                  <p className="text-primary font-semibold text-lg">
-                    President
-                  </p>
-                </div>
-              </div>
-
-              {/* VP 2 */}
-              <div className="text-center group">
-                <div className="relative mb-8">
-                  <div className="w-72 h-72 mx-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 ring-4 ring-primary/20 group-hover:ring-primary/40 bg-gradient-to-br from-primary/5 to-primary/10">
-                    <Image
-                      src="/members/sir-arran.jpg"
-                      alt="Sir Arran - VP of Operations"
-                      width={288}
-                      height={288}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="text-xl font-bold text-card-foreground">
-                    Arran Lester P. Galvan
-                  </h4>
-                  <p className="text-primary font-semibold text-lg">
-                    Vice President
-                  </p>
-                </div>
               </div>
             </div>
           </div>
