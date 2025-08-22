@@ -73,7 +73,7 @@ const certifications = [
     description: "Official accreditation certificate from the Bureau of Customs authorizing import operations",
     image: "/certifications/BOC Certificate of Accreditation as Importer.jpg",
     category: "Customs Accreditation",
-    issueDate: "August 9, 2025",
+    issueDate: "August 9, 2026",
     expiryDate: "August 9, 2026",
     certificateNumber: "BOC-CAI-2024-001",
     issuingAuthority: "Bureau of Customs"
