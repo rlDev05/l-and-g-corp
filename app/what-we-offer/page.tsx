@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useState } from "react";
+import FadeInSection from "@/components/FadeInSection";
 
 // Types
 interface Product {
@@ -229,41 +230,49 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
-          What We{" "}
-          <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
-            Offer
-          </span>
-        </h1>
-        <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-          At L&G Energy Corp., we are committed to powering homes, businesses, and industries with reliable energy solutions. Through our extensive network and expertise in the fuel industry, we provide high-quality products and services designed to meet diverse energy needs.
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-          L&G Energy Corp. is your trusted partner in energy — delivering quality, safety, and efficiency in every drop.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={() => scrollToSection('products-services')}
-            className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-          >
-            <span className="flex items-center gap-2">
-              Explore Our Offerings
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+        <FadeInSection delay={200} duration={800}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
+            What We{" "}
+            <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
+              Offer
             </span>
-          </button>
-        </div>
+          </h1>
+        </FadeInSection>
+        <FadeInSection delay={400} duration={800}>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+            At L&G Energy Corp., we are committed to powering homes, businesses, and industries with reliable energy solutions. Through our extensive network and expertise in the fuel industry, we provide high-quality products and services designed to meet diverse energy needs.
+          </p>
+        </FadeInSection>
+        <FadeInSection delay={600} duration={800}>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+            L&G Energy Corp. is your trusted partner in energy — delivering quality, safety, and efficiency in every drop.
+          </p>
+        </FadeInSection>
+        <FadeInSection delay={800} duration={800}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => scrollToSection('products-services')}
+              className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                Explore Our Offerings
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </FadeInSection>
       </div>
     </section>
   );
@@ -273,34 +282,40 @@ const FilterNavigation = ({ activeFilter, onFilterChange }: {
   activeFilter: string; 
   onFilterChange: (filter: string) => void; 
 }) => (
-  <div className="flex justify-center mb-12">
-    <div className="flex space-x-8 text-sm sm:text-base">
-      {FILTER_OPTIONS.map((option) => (
-        <FilterButton
-          key={option.value}
-          value={option.value}
-          label={option.label}
-          isActive={activeFilter === option.value}
-          onClick={onFilterChange}
-        />
-      ))}
+  <FadeInSection delay={200} duration={800}>
+    <div className="flex justify-center mb-12">
+      <div className="flex space-x-8 text-sm sm:text-base">
+        {FILTER_OPTIONS.map((option) => (
+          <FilterButton
+            key={option.value}
+            value={option.value}
+            label={option.label}
+            isActive={activeFilter === option.value}
+            onClick={onFilterChange}
+          />
+        ))}
+      </div>
     </div>
-  </div>
+  </FadeInSection>
 );
 
 const ProductsSection = () => (
   <div className="mb-16">
-    <div className="text-center mb-12">
-      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground mb-4">
-        Our Products
-      </h3>
-      <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-        We supply a full range of petroleum and fuel products trusted across industries:
-      </p>
-    </div>
+    <FadeInSection delay={200} duration={800}>
+      <div className="text-center mb-12">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground mb-4">
+          Our Products
+        </h3>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We supply a full range of petroleum and fuel products trusted across industries:
+        </p>
+      </div>
+    </FadeInSection>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+      {products.map((product, index) => (
+        <FadeInSection key={product.id} delay={400 + index * 100} duration={800}>
+          <ProductCard product={product} />
+        </FadeInSection>
       ))}
     </div>
   </div>
@@ -308,17 +323,21 @@ const ProductsSection = () => (
 
 const ServicesSection = () => (
   <div>
-    <div className="text-center mb-12">
-      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground mb-4">
-        Our Services
-      </h3>
-      <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-        We go beyond fuel supply by offering complete energy solutions:
-      </p>
-    </div>
+    <FadeInSection delay={200} duration={800}>
+      <div className="text-center mb-12">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground mb-4">
+          Our Services
+        </h3>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We go beyond fuel supply by offering complete energy solutions:
+        </p>
+      </div>
+    </FadeInSection>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {services.map((service) => (
-        <ServiceCard key={service.id} service={service} />
+      {services.map((service, index) => (
+        <FadeInSection key={service.id} delay={400 + index * 100} duration={800}>
+          <ServiceCard service={service} />
+        </FadeInSection>
       ))}
     </div>
   </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import FadeInSection from "@/components/FadeInSection";
 
 // Actual certifications data using your real certification images
 const certifications = [
@@ -12,6 +13,7 @@ const certifications = [
     fullTitle: "L&G Energy Corporation - Business Permit & Registration",
     description: "Official business permit and registration certificate for L&G Energy Corporation",
     image: "/certifications/buss-perm.png",
+    images: ["/certifications/buss-perm.png"],
     category: "Business Registration",
     issueDate: "June 25, 2024",
     expiryDate: "December 31, 2025",
@@ -20,10 +22,11 @@ const certifications = [
   },
   {
     id: 2,
-    title: "Page 1 of BIR Certificate of Registration",
-    fullTitle: "L&G Energy Corporation - Primary Certificate of Registration",
-    description: "Primary certificate of registration for corporate business operations",
+    title: "BIR Certificate of Registration",
+    fullTitle: "L&G Energy Corporation - BIR Certificate of Registration (Pages 1 & 2)",
+    description: "Complete BIR certificate of registration for corporate business operations including both pages",
     image: "/certifications/cor-1.png",
+    images: ["/certifications/cor-1.png", "/certifications/cor-2.png"],
     category: "Corporate Registration",
     issueDate: "June 11, 2025",
     expiryDate: "February 20, 2027",
@@ -32,22 +35,11 @@ const certifications = [
   },
   {
     id: 3,
-    title: "Page 2 of BIR Certificate of Registration",
-    fullTitle: "L&G Energy Corporation - Secondary Certificate of Registration",
-    description: "Additional certificate of registration for expanded business operations",
-    image: "/certifications/cor-2.png",
-    category: "Corporate Registration",
-    issueDate: "June 11, 2025",
-    expiryDate: "March 10, 2027",
-    certificateNumber: "COR-2024-002",
-    issuingAuthority: "Securities and Exchange Commission"
-  },
-  {
-    id: 4,
     title: "Barangay Clearance",
     fullTitle: "L&G Energy Corporation - Barangay Business Clearance",
     description: "Local barangay clearance certificate for business operations",
     image: "/certifications/brgy-clearance.png",
+    images: ["/certifications/brgy-clearance.png"],
     category: "Local Compliance",
     issueDate: "June 5, 2025",
     expiryDate: "December 31, 2025",
@@ -55,11 +47,12 @@ const certifications = [
     issuingAuthority: "Barangay Council"
   },
   {
-    id: 5,
+    id: 4,
     title: "BOC Certificate of Registration",
     fullTitle: "L&G Energy Corporation - Bureau of Customs Certificate of Registration",
     description: "Official registration certificate from the Bureau of Customs for import/export operations",
     image: "/certifications/BOC Certificate of Registration.jpg",
+    images: ["/certifications/BOC Certificate of Registration.jpg"],
     category: "Customs Registration",
     issueDate: "August 09, 2025",
     expiryDate: "August 09, 2026",
@@ -67,11 +60,12 @@ const certifications = [
     issuingAuthority: "Bureau of Customs"
   },
   {
-    id: 6,
+    id: 5,
     title: "BOC Certificate of Accreditation as Importer",
     fullTitle: "L&G Energy Corporation - Bureau of Customs Accreditation as Importer",
     description: "Official accreditation certificate from the Bureau of Customs authorizing import operations",
     image: "/certifications/BOC Certificate of Accreditation as Importer.jpg",
+    images: ["/certifications/BOC Certificate of Accreditation as Importer.jpg"],
     category: "Customs Accreditation",
     issueDate: "August 9, 2026",
     expiryDate: "August 9, 2026",
@@ -125,7 +119,7 @@ export default function Certifications() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/background/bg-3.png')",
+            backgroundImage: "url('/background/certif-bg.jpg')",
           }}
         />
 
@@ -134,38 +128,44 @@ export default function Certifications() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
-            Our{" "}
-            <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
-              Certifications
-            </span>
-          </h1>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-            L&G Energy Corp. maintains the highest standards of quality, safety, and environmental responsibility through our comprehensive certification portfolio.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => document.getElementById('certifications-carousel')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-            >
-              <span className="flex items-center gap-2">
-                View Certifications
-                <svg
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+          <FadeInSection delay={200} duration={800}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
+              Our{" "}
+              <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
+                Certifications
               </span>
-            </button>
-          </div>
+            </h1>
+          </FadeInSection>
+          <FadeInSection delay={400} duration={800}>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+              L&G Energy Corp. maintains the highest standards of quality, safety, and environmental responsibility through our comprehensive certification portfolio.
+            </p>
+          </FadeInSection>
+          <FadeInSection delay={600} duration={800}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                onClick={() => document.getElementById('certifications-carousel')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+              >
+                <span className="flex items-center gap-2">
+                  View Certifications
+                  <svg
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </FadeInSection>
         </div>
       </section>
 
@@ -375,19 +375,49 @@ export default function Certifications() {
 
                                {/* Image Container */}
                 <div className="mb-6 bg-gray-50 rounded-lg p-4">
-                  <div className="flex items-center justify-center">
-                    <img 
-                      src={selectedCertification.image} 
-                      alt={selectedCertification.title}
-                      className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
-                      style={{
-                        maxHeight: 'min(400px, 50vh)'
-                      }}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
-                    />
+                  <div className="space-y-4">
+                    {selectedCertification.images && selectedCertification.images.length > 1 ? (
+                      // Multiple images - show with page indicators
+                      selectedCertification.images.map((image, index) => (
+                        <div key={index} className="flex flex-col items-center">
+                          <div className="mb-2">
+                            <span className="text-sm font-medium text-gray-600 bg-white px-3 py-1 rounded-full shadow-sm">
+                              Page {index + 1}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-center">
+                            <img 
+                              src={image} 
+                              alt={`${selectedCertification.title} - Page ${index + 1}`}
+                              className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
+                              style={{
+                                maxHeight: 'min(400px, 50vh)'
+                              }}
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                              }}
+                            />
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      // Single image
+                      <div className="flex items-center justify-center">
+                        <img 
+                          src={selectedCertification.image} 
+                          alt={selectedCertification.title}
+                          className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
+                          style={{
+                            maxHeight: 'min(400px, 50vh)'
+                          }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 

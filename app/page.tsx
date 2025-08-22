@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Home() {
   return (
@@ -18,37 +19,43 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
-            Powering the Philippines&apos; <br /> Energy Future.
-          </h1>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-            Leading Philippine energy trading company specializing in fuel
-            products and gaseous fuels. We support key industries with reliable,
-            efficient energy solutions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="#services"
-              className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <span className="flex items-center gap-2">
-                Learn More
-                <svg
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </a>
-          </div>
+          <FadeInSection delay={200} duration={800}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
+              Powering the Philippines&apos; <br /> Energy Future.
+            </h1>
+          </FadeInSection>
+          <FadeInSection delay={400} duration={800}>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+              Leading Philippine energy trading company specializing in fuel
+              products and gaseous fuels. We support key industries with reliable,
+              efficient energy solutions.
+            </p>
+          </FadeInSection>
+          <FadeInSection delay={600} duration={800}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="#services"
+                className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <span className="flex items-center gap-2">
+                  Learn More
+                  <svg
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </FadeInSection>
         </div>
       </section>
 
@@ -57,41 +64,45 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text Content */}
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
-                  Company{" "}
-                  <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                    Profile
-                  </span>
-                </h2>
-                <div className="w-20 h-1 bg-primary rounded-full"></div>
+            <FadeInSection delay={200} duration={800}>
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
+                    Company{" "}
+                    <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                      Profile
+                    </span>
+                  </h2>
+                  <div className="w-20 h-1 bg-primary rounded-full"></div>
+                </div>
+                <div className="space-y-4 text-muted-foreground">
+                  <p className="text-base leading-relaxed text-justify">
+                    L&G Energy Corp is a Philippine-based energy trading company established in 2025. We specialize in the import, export, and wholesale distribution of fuel products and gaseous fuels. With a strong focus on reliability, operational efficiency, and long-term partnerships, we aim to support the energy demands of key industries such as transportation, manufacturing, construction, and power generation.
+                  </p>
+                  <p className="text-base leading-relaxed text-justify">
+                  We are committed to delivering safe, high-quality fuel solutions across the country and are continuously expanding our network of storage, logistics, and distribution channels. Backed by a team of experienced professionals and a growing base of satisfied clients, L&G Energy Corp strives to become a trusted partner in the Philippine energy sector.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-4 text-muted-foreground">
-                <p className="text-base leading-relaxed text-justify">
-                  L&G Energy Corp is a Philippine-based energy trading company established in 2025. We specialize in the import, export, and wholesale distribution of fuel products and gaseous fuels. With a strong focus on reliability, operational efficiency, and long-term partnerships, we aim to support the energy demands of key industries such as transportation, manufacturing, construction, and power generation.
-                </p>
-                <p className="text-base leading-relaxed text-justify">
-                We are committed to delivering safe, high-quality fuel solutions across the country and are continuously expanding our network of storage, logistics, and distribution channels. Backed by a team of experienced professionals and a growing base of satisfied clients, L&G Energy Corp strives to become a trusted partner in the Philippine energy sector.
-                </p>
-              </div>
-            </div>
+            </FadeInSection>
 
             {/* Image */}
-            <div className="relative group">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-sm mx-auto">
-                <Image
-                  src="/background/company-image.jpg"
-                  alt="L&G Corporation Office"
-                  width={300}
-                  height={300}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+            <FadeInSection delay={400} duration={800}>
+              <div className="relative group">
+                <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-sm mx-auto">
+                  <Image
+                    src="/background/company-image.jpg"
+                    alt="L&G Corporation Office"
+                    width={300}
+                    height={300}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-primary rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                <div className="absolute -top-2 -left-2 w-8 h-8 bg-secondary rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-primary rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-secondary rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
-            </div>
+            </FadeInSection>
           </div>
         </div>
       </section>
