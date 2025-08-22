@@ -13,6 +13,7 @@ const navigation = [
   { name: "Mission & Vision", href: "/core-values" },
   { name: "What We Offer", href: "/what-we-offer" },
   { name: "Certifications", href: "/certifications" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -68,13 +69,13 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="w-24 h-24 lg:w-28 lg:h-28 flex items-center justify-center">
+              <div className="w-30 h-30 lg:w-34 lg:h-34 flex items-center justify-center">
                 <Image
                   src="/logo/lng-transparent.png"
                   alt="L&G Corporation Logo"
                   width={114}
                   height={114}
-                  className="w-22 h-22 lg:w-26 lg:h-26 object-cover"
+                  className="w-28 h-28 lg:w-32 lg:h-32 object-cover"
                 />
               </div>
             </Link>

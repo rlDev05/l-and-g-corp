@@ -32,7 +32,7 @@ export default function Home() {
               className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <span className="flex items-center gap-2">
-                Our Services
+                Learn More
                 <svg
                   className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"
