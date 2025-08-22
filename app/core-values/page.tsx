@@ -44,10 +44,10 @@ export default function CoreValues() {
             Discover what drives L&G Energy Corp forward and how we&apos;re committed to powering the Philippines&apos; energy future with integrity, innovation, and sustainability.
           </p>
                      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-             <button
-               onClick={() => scrollToSection('mission-vision')}
-               className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-             >
+                         <button
+              onClick={() => scrollToSection('mission-vision')}
+              className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
                <span className="flex items-center gap-2">
                  Learn More
                  <svg

@@ -81,7 +81,7 @@ export default function Footer() {
               <div className="flex space-x-3">
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center text-white hover:text-[#D4A54A] hover:bg-gray-500 transition-all duration-300"
+                  className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center text-white hover:text-[#D4A54A] hover:bg-gray-500 transition-all duration-300 cursor-pointer"
                   aria-label="Facebook"
                   title="Follow us on Facebook"
                 >
@@ -91,7 +91,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center text-white hover:text-[#D4A54A] hover:bg-gray-500 transition-all duration-300"
+                  className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center text-white hover:text-[#D4A54A] hover:bg-gray-500 transition-all duration-300 cursor-pointer"
                   aria-label="LinkedIn"
                   title="Connect with us on LinkedIn"
                 >
@@ -112,7 +112,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-gray-200 hover:text-[#D4A54A] transition-colors duration-300"
+                      className="text-gray-200 hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
                     >
                       {link.name}
                     </Link>
@@ -145,7 +145,7 @@ export default function Footer() {
                       <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-200 text-sm">+63 962 687 6432</p>
+                  <a href="tel:+639626876432" className="text-gray-200 text-sm hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer">+63 962 687 6432</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-5 h-5 text-[#D4A54A]">
@@ -153,7 +153,7 @@ export default function Footer() {
                       <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-200 text-sm">+63 918 935 8977</p>
+                  <a href="tel:+639189358977" className="text-gray-200 text-sm hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer">+63 918 935 8977</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-5 h-5 text-[#D4A54A]">
@@ -161,7 +161,7 @@ export default function Footer() {
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-200 text-sm">rlorenzo@l-and-gcorp.com</p>
+                  <a href="mailto:rlorenzo@l-and-gcorp.com" className="text-gray-200 text-sm hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer">rlorenzo@l-and-gcorp.com</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-5 h-5 text-[#D4A54A]">
@@ -169,7 +169,7 @@ export default function Footer() {
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-200 text-sm">arrangalvan@l-and-gcorp.com</p>
+                  <a href="mailto:arrangalvan@l-and-gcorp.com" className="text-gray-200 text-sm hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer">arrangalvan@l-and-gcorp.com</a>
                 </div>
               </div>
             </div>
@@ -190,19 +190,19 @@ export default function Footer() {
             <div className="flex items-center space-x-6 text-sm text-gray-200">
               <Link
                 href="/contact"
-                className="hover:text-[#D4A54A] transition-colors duration-300"
+                className="hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
               >
                 Contact Us
               </Link>
               <Link
                 href="/certifications"
-                className="hover:text-[#D4A54A] transition-colors duration-300"
+                className="hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
               >
                 Certifications
               </Link>
               <Link
                 href="/core-values"
-                className="hover:text-[#D4A54A] transition-colors duration-300"
+                className="hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
               >
                 About Us
               </Link>
