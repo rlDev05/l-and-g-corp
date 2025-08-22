@@ -160,7 +160,7 @@ const ProductCard = ({ product }: { product: Product }) => (
           {product.title}
         </CardTitle>
       </div>
-      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-left">
+      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center">
         {product.description}
       </CardDescription>
       <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
@@ -196,7 +196,7 @@ const ServiceCard = ({ service }: { service: Service }) => (
           {service.title}
         </CardTitle>
       </div>
-      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-left">
+      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center">
         {service.description}
       </CardDescription>
       <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
