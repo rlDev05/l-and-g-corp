@@ -83,9 +83,6 @@ export default function Contact() {
                 Get In Touch
               </h2>
               <div className="w-16 h-1 bg-primary rounded-full mx-auto"></div>
-              <p className="text-base text-gray-600 mt-4 max-w-2xl mx-auto">
-                Ready to discuss your energy needs? Contact our team for personalized solutions and expert guidance.
-              </p>
             </div>
           </FadeInSection>
 
@@ -169,8 +166,7 @@ export default function Contact() {
                       <h4 className="font-semibold text-gray-900 mb-1 text-sm">Business Hours</h4>
                       <p className="text-gray-600 text-sm">
                         Monday - Friday: 8:00 AM - 6:00 PM<br />
-                        Saturday: 9:00 AM - 3:00 PM<br />
-                        Sunday: Closed
+                        Saturday - Sunday: Closed
                       </p>
                     </div>
                   </div>
