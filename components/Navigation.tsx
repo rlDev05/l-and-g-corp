@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/#company-profile" },
-  { name: "Values", href: "/core-values" },
+  { name: "Mission & Vision", href: "/core-values" },
   { name: "What We Offer", href: "/what-we-offer" },
   { name: "Certifications", href: "/certifications" },
 ];
@@ -68,23 +68,15 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center mr-2">
+              <div className="w-24 h-24 lg:w-28 lg:h-28 flex items-center justify-center">
                 <Image
                   src="/logo/lng-transparent.png"
                   alt="L&G Corporation Logo"
-                  width={80}
-                  height={80}
-                  className="w-14 h-14 lg:w-18 lg:h-18 object-cover"
+                  width={114}
+                  height={114}
+                  className="w-22 h-22 lg:w-26 lg:h-26 object-cover"
                 />
               </div>
-              <span
-                className={cn(
-                  "text-xl lg:text-2xl font-semibold transition-all duration-300",
-                  isScrolled ? "text-black" : "text-white"
-                )}
-              >
-                L&G Energy
-              </span>
             </Link>
           </div>
 

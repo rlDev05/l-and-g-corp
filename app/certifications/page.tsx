@@ -13,31 +13,31 @@ const certifications = [
     description: "Official business permit and registration certificate for L&G Energy Corporation",
     image: "/certifications/buss-perm.png",
     category: "Business Registration",
-    issueDate: "January 15, 2024",
-    expiryDate: "December 31, 2024",
+    issueDate: "June 25, 2024",
+    expiryDate: "December 31, 2025",
     certificateNumber: "BP-2024-001",
     issuingAuthority: "Local Government Unit"
   },
   {
     id: 2,
-    title: "Certificate of Registration",
+    title: "Page 1 of BIR Certificate of Registration",
     fullTitle: "L&G Energy Corporation - Primary Certificate of Registration",
     description: "Primary certificate of registration for corporate business operations",
     image: "/certifications/cor-1.png",
     category: "Corporate Registration",
-    issueDate: "February 20, 2024",
+    issueDate: "June 11, 2025",
     expiryDate: "February 20, 2027",
     certificateNumber: "COR-2024-001",
     issuingAuthority: "Securities and Exchange Commission"
   },
   {
     id: 3,
-    title: "Secondary Certificate of Registration",
+    title: "Page 2 of BIR Certificate of Registration",
     fullTitle: "L&G Energy Corporation - Secondary Certificate of Registration",
     description: "Additional certificate of registration for expanded business operations",
     image: "/certifications/cor-2.png",
     category: "Corporate Registration",
-    issueDate: "March 10, 2024",
+    issueDate: "June 11, 2025",
     expiryDate: "March 10, 2027",
     certificateNumber: "COR-2024-002",
     issuingAuthority: "Securities and Exchange Commission"
@@ -49,10 +49,34 @@ const certifications = [
     description: "Local barangay clearance certificate for business operations",
     image: "/certifications/brgy-clearance.png",
     category: "Local Compliance",
-    issueDate: "April 5, 2024",
-    expiryDate: "April 5, 2025",
+    issueDate: "June 5, 2025",
+    expiryDate: "December 31, 2025",
     certificateNumber: "BC-2024-001",
     issuingAuthority: "Barangay Council"
+  },
+  {
+    id: 5,
+    title: "BOC Certificate of Registration",
+    fullTitle: "L&G Energy Corporation - Bureau of Customs Certificate of Registration",
+    description: "Official registration certificate from the Bureau of Customs for import/export operations",
+    image: "/certifications/BOC Certificate of Registration.jpg",
+    category: "Customs Registration",
+    issueDate: "August 09, 2025",
+    expiryDate: "August 09, 2026",
+    certificateNumber: "BOC-COR-2024-001",
+    issuingAuthority: "Bureau of Customs"
+  },
+  {
+    id: 6,
+    title: "BOC Certificate of Accreditation as Importer",
+    fullTitle: "L&G Energy Corporation - Bureau of Customs Accreditation as Importer",
+    description: "Official accreditation certificate from the Bureau of Customs authorizing import operations",
+    image: "/certifications/BOC Certificate of Accreditation as Importer.jpg",
+    category: "Customs Accreditation",
+    issueDate: "August 9, 2025",
+    expiryDate: "August 9, 2026",
+    certificateNumber: "BOC-CAI-2024-001",
+    issuingAuthority: "Bureau of Customs"
   }
 ];
 
@@ -226,48 +250,47 @@ export default function Certifications() {
                {getVisibleCertifications().map((certification, index) => (
                  <Card
                    key={certification.id}
-                   className={`group cursor-pointer transition-all duration-500 transform hover:scale-105 hover:shadow-xl border-0 shadow-lg bg-card overflow-hidden w-80 h-96 ${
+                   className={`group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl w-80 h-96 ${
                      index === 0 ? 'opacity-100' : 'opacity-70'
                    }`}
                    onClick={() => openModal(certification)}
                  >
-                                     <div className="h-48 bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
-                    <img 
-                      src={certification.image} 
-                      alt={certification.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      onError={(e) => {
-                        // Fallback to placeholder if image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('opacity-20');
-                      }}
-                    />
-                    <div className="text-4xl opacity-20 absolute">
-                      📜
-                    </div>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg font-semibold">
-                          Click to View
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                                     <CardContent className="p-4 h-48 flex flex-col justify-between">
+                   <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
+                     <img 
+                       src={certification.image} 
+                       alt={certification.title}
+                       className="w-full h-full object-cover"
+                       onError={(e) => {
+                         const target = e.target as HTMLImageElement;
+                         target.style.display = 'none';
+                         target.nextElementSibling?.classList.remove('opacity-20');
+                       }}
+                     />
+                     <div className="text-4xl opacity-20 absolute">
+                       📜
+                     </div>
+                     {/* Overlay */}
+                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                         <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg font-semibold">
+                           Click to View
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <CardContent className="p-4 h-48 flex flex-col justify-between">
                      <div>
-                       <h3 className="text-base font-bold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                       <h3 className="text-base font-bold text-gray-900 leading-tight text-center group-hover:text-primary transition-colors duration-300 line-clamp-2 mb-2">
                          {certification.title}
                        </h3>
-                       <p className="text-xs text-muted-foreground mb-2 line-clamp-3">
+                       <p className="text-sm text-gray-600 leading-relaxed text-left line-clamp-3">
                          {certification.description}
                        </p>
                      </div>
                      <div>
-                       <div className="w-8 h-0.5 bg-primary/30 mx-auto mb-2"></div>
+                       <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
                        <div className="text-center">
-                         <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">
+                         <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
                            {certification.category}
                          </span>
                        </div>

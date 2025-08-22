@@ -175,10 +175,10 @@ export default function Home() {
                 </div>
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-card-foreground">
-                    Sir Rayner
+                    Rayner C. Lorenzo
                   </h4>
                   <p className="text-primary font-semibold text-lg">
-                    Vice President of Technology
+                    President
                   </p>
                 </div>
               </div>
@@ -198,10 +198,10 @@ export default function Home() {
                 </div>
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-card-foreground">
-                    Sir Arran
+                    Arran Lester P. Galvan
                   </h4>
                   <p className="text-primary font-semibold text-lg">
-                    Vice President of Operations
+                    Vice President
                   </p>
                 </div>
               </div>

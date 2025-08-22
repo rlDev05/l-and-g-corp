@@ -60,23 +60,12 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
             {/* Company Info */}
             <div className="lg:col-span-1 flex flex-col">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 flex items-center justify-center mr-3">
-                  <Image
-                    src="/logo/lng-transparent.png"
-                    alt="L&G Corporation Logo"
-                    width={64}
-                    height={64}
-                    className="w-14 h-14 object-cover"
-                  />
-                </div>
-                <div>
-                  <div className="text-white font-bold text-lg">L&G ENERGY CORP</div>
-                  <div className="text-white font-semibold text-sm">Powering the Philippines&apos; Energy Future</div>
-                </div>
+              <div className="mb-4">
+                <div className="text-white font-bold text-lg">L&G ENERGY CORP</div>
+                <div className="text-white font-semibold text-sm">Powering the Philippines&apos; Energy Future</div>
               </div>
-              <p className="text-gray-300 text-sm mb-3 leading-relaxed">
-                Leading Philippine energy trading company specializing in fuel products and gaseous fuels. We support key industries with reliable, efficient energy solutions.
+              <p className="text-gray-300 text-sm mb-3 leading-relaxed text-justify">
+              L&G Energy Corp is an emerging Philippine energy trading company engaged in the import, export, and wholesale of fuel and gaseous products. Guided by innovation and commitment, we aim to become a trusted partner in meeting the country’s growing energy needs.
               </p>
               <div className="flex space-x-3">
                 <a
