@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import FadeInSection from "@/components/FadeInSection";
 import Image from "next/image";
 
@@ -250,17 +250,17 @@ export default function Certifications() {
                {getVisibleCertifications().map((certification, index) => (
                  <Card
                    key={certification.id}
-                   className={`group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl w-80 h-96 ${
+                   className={`group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl w-80 ${
                      index === 0 ? 'opacity-100' : 'opacity-70'
                    }`}
                    onClick={() => openModal(certification)}
                  >
-                   <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
+                   <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
                      <Image
                        src={certification.image} 
                        alt={certification.title}
-                       width={320}
-                       height={192}
+                       width={400}
+                       height={300}
                        className="w-full h-full object-cover"
                        onError={(e) => {
                          const target = e.target as HTMLImageElement;
@@ -280,22 +280,20 @@ export default function Certifications() {
                        </div>
                      </div>
                    </div>
-                   <CardContent className="p-4 h-48 flex flex-col justify-between">
-                     <div>
-                       <h3 className="text-base font-bold text-gray-900 leading-tight text-center group-hover:text-primary transition-colors duration-300 line-clamp-2 mb-2">
+                   <CardContent className="pt-0 px-5 pb-5">
+                     <div className="text-center mb-3">
+                       <CardTitle className="text-base font-bold text-gray-900 leading-tight text-center">
                          {certification.title}
-                       </h3>
-                       <p className="text-sm text-gray-600 leading-relaxed text-left line-clamp-3">
-                         {certification.description}
-                       </p>
+                       </CardTitle>
                      </div>
-                     <div>
-                       <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
-                       <div className="text-center">
-                         <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-                           {certification.category}
-                         </span>
-                       </div>
+                     <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center">
+                       {certification.description}
+                     </CardDescription>
+                     <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
+                     <div className="text-center">
+                       <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+                         {certification.category}
+                       </span>
                      </div>
                    </CardContent>
                 </Card>

@@ -129,10 +129,10 @@ const FilterButton = ({
 }) => (
   <button
     onClick={() => onClick(value)}
-    className={`font-medium transition-colors duration-200 ${
+    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
       isActive 
-        ? "text-primary font-semibold" 
-        : "text-muted-foreground hover:text-card-foreground"
+        ? "bg-primary text-primary-foreground hover:bg-primary/90" 
+        : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300"
     }`}
   >
     {label}
@@ -289,7 +289,7 @@ const FilterNavigation = ({ activeFilter, onFilterChange }: {
 }) => (
   <FadeInSection delay={200} duration={800}>
     <div className="flex justify-center mb-12">
-      <div className="flex space-x-8 text-sm sm:text-base">
+      <div className="flex space-x-4 sm:space-x-6">
         {FILTER_OPTIONS.map((option) => (
           <FilterButton
             key={option.value}

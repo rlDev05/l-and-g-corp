@@ -21,6 +21,11 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +33,7 @@ export default function Navigation() {
       setIsScrolled(scrollPosition > 50);
       
       // Check if we're on the home page
-      if (window.location.pathname === '/') {
+      if (pathname === '/') {
         const companyProfileSection = document.getElementById('company-profile');
         if (companyProfileSection) {
           const rect = companyProfileSection.getBoundingClientRect();
@@ -47,7 +52,7 @@ export default function Navigation() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -78,7 +83,7 @@ export default function Navigation() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-helvetica",
         isScrolled
           ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 shadow-lg"
           : "bg-transparent",
@@ -114,7 +119,7 @@ export default function Navigation() {
                     onClick={(e) => {
                       if (item.name === "About") {
                         e.preventDefault();
-                        if (window.location.pathname === '/') {
+                        if (pathname === '/') {
                           const element = document.getElementById('company-profile');
                           if (element) {
                             element.scrollIntoView({ behavior: 'smooth' });
@@ -190,54 +195,56 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Navigation Overlay */}
-      <div
-        className={cn(
-          "lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out",
-          isMobileMenuOpen 
-            ? "opacity-100 pointer-events-auto" 
-            : "opacity-0 pointer-events-none"
-        )}
-        style={{
-          backgroundColor: isScrolled 
-            ? 'rgba(255, 255, 255, 0.95)' 
-            : 'rgba(0, 0, 0, 0.9)'
-        }}
-      >
-        <div className="flex flex-col justify-center items-center h-full space-y-6 sm:space-y-8 px-6">
-          {navigation.map((item, index) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  "block text-xl sm:text-2xl lg:text-3xl font-semibold transition-all duration-300 relative group hover:scale-110",
-                  isScrolled
-                    ? "text-black hover:text-primary"
-                    : "text-white hover:text-primary/80",
-                )}
-                style={{
-                  color: isActive 
-                    ? 'var(--color-primary)' 
-                    : isScrolled ? 'inherit' : 'white',
-                  animationDelay: `${index * 100}ms`
-                }}
-              >
-                {item.name}
-                <span
+      {isClient && (
+        <div
+          className={cn(
+            "lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out",
+            isMobileMenuOpen 
+              ? "opacity-100 pointer-events-auto" 
+              : "opacity-0 pointer-events-none"
+          )}
+          style={{
+            backgroundColor: isScrolled 
+              ? 'rgba(255, 255, 255, 0.95)' 
+              : 'rgba(0, 0, 0, 0.9)'
+          }}
+        >
+          <div className="flex flex-col justify-center items-center h-full space-y-6 sm:space-y-8 px-6">
+            {navigation.map((item, index) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300",
-                    isActive
-                      ? "bg-primary"
-                      : "bg-transparent group-hover:bg-primary/50"
+                    "block text-xl sm:text-2xl lg:text-3xl font-semibold transition-all duration-300 relative group hover:scale-110",
+                    isScrolled
+                      ? "text-black hover:text-primary"
+                      : "text-white hover:text-primary/80",
                   )}
-                />
-              </Link>
-            );
-          })}
+                  style={{
+                    color: isActive 
+                      ? 'var(--color-primary)' 
+                      : isScrolled ? 'inherit' : 'white',
+                    animationDelay: `${index * 100}ms`
+                  }}
+                >
+                  {item.name}
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300",
+                      isActive
+                        ? "bg-primary"
+                        : "bg-transparent group-hover:bg-primary/50"
+                    )}
+                  />
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
