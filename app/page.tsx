@@ -119,35 +119,39 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Image */}
-            <div className="relative group order-2 lg:order-1">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-md mx-auto">
-                <Image
-                  src="/logo/l-and-g-corp-logo.jpg"
-                  alt="L&G Energy Operations"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+            <FadeInSection delay={400} duration={800}>
+              <div className="relative group order-2 lg:order-1">
+                <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 max-w-md mx-auto">
+                  <Image
+                    src="/logo/l-and-g-corp-logo.jpg"
+                    alt="L&G Energy Operations"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
-            </div>
+            </FadeInSection>
 
             {/* Text Content */}
-            <div className="space-y-8 order-1 lg:order-2 max-w-2xl mx-auto lg:mx-0">
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
-                  About{" "}
-                  <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
-                    L&G Energy
-                  </span>
-                </h2>
-                <div className="w-20 h-1 bg-primary rounded-full"></div>
+            <FadeInSection delay={200} duration={800}>
+              <div className="space-y-8 order-1 lg:order-2 max-w-2xl mx-auto lg:mx-0">
+                <div className="space-y-4">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
+                    About{" "}
+                    <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
+                      L&G Energy
+                    </span>
+                  </h2>
+                  <div className="w-20 h-1 bg-primary rounded-full"></div>
+                </div>
+                <div className="space-y-6 text-muted-foreground text-justify">
+                  <p className="text-base leading-relaxed">
+                  Established in 2025, we are a Philippine-based energy trading company specializing in the import, export, and wholesale distribution of fuel products and gaseous fuels. Our focus on reliability, operational efficiency, and long-term partnerships supports the energy demands of key industries.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-6 text-muted-foreground text-justify">
-                <p className="text-base leading-relaxed">
-                Established in 2025, we are a Philippine-based energy trading company specializing in the import, export, and wholesale distribution of fuel products and gaseous fuels. Our focus on reliability, operational efficiency, and long-term partnerships supports the energy demands of key industries.
-                </p>
-              </div>
-            </div>
+            </FadeInSection>
           </div>
         </div>
       </section>
