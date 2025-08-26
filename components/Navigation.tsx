@@ -58,7 +58,12 @@ export default function Navigation() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
-      if (isMobileMenuOpen && !target.closest('.mobile-menu-container')) {
+      const mobileMenu = document.querySelector('.mobile-menu-overlay');
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      
+      if (isMobileMenuOpen && 
+          !mobileMenu?.contains(target) && 
+          !mobileMenuButton?.contains(target)) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -79,6 +84,27 @@ export default function Navigation() {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  const handleLinkClick = (item: typeof navigation[0], e: React.MouseEvent) => {
+    // Close mobile menu first
+    setIsMobileMenuOpen(false);
+    
+    if (item.name === "About") {
+      e.preventDefault();
+      if (pathname === '/') {
+        // Small delay to ensure menu closes first
+        setTimeout(() => {
+          const element = document.getElementById('company-profile');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        window.location.href = '/#company-profile';
+      }
+    }
+    // For other links, Next.js Link will handle navigation
+  };
 
   return (
     <nav
@@ -116,19 +142,7 @@ export default function Navigation() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => {
-                      if (item.name === "About") {
-                        e.preventDefault();
-                        if (pathname === '/') {
-                          const element = document.getElementById('company-profile');
-                          if (element) {
-                            element.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        } else {
-                          window.location.href = '/#company-profile';
-                        }
-                      }
-                    }}
+                    onClick={(e) => handleLinkClick(item, e)}
                     className={cn(
                       "px-3 xl:px-6 py-3 text-sm xl:text-base font-medium transition-all duration-300 relative group hover:scale-105",
                       isScrolled
@@ -157,12 +171,12 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden mobile-menu-container">
+          <div className="lg:hidden">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="relative w-10 h-10 sm:w-12 sm:h-12 p-0 hover:bg-transparent focus:bg-transparent"
+              className="mobile-menu-button relative w-10 h-10 sm:w-12 sm:h-12 p-0 hover:bg-transparent focus:bg-transparent"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -198,7 +212,7 @@ export default function Navigation() {
       {isClient && (
         <div
           className={cn(
-            "lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out",
+            "mobile-menu-overlay lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out",
             isMobileMenuOpen 
               ? "opacity-100 pointer-events-auto" 
               : "opacity-0 pointer-events-none"
@@ -216,9 +230,9 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleLinkClick(item, e)}
                   className={cn(
-                    "block text-xl sm:text-2xl lg:text-3xl font-semibold transition-all duration-300 relative group hover:scale-110",
+                    "block text-xl sm:text-2xl lg:text-3xl font-semibold transition-all duration-300 relative group hover:scale-110 touch-manipulation",
                     isScrolled
                       ? "text-black hover:text-primary"
                       : "text-white hover:text-primary/80",
@@ -227,7 +241,12 @@ export default function Navigation() {
                     color: isActive 
                       ? 'var(--color-primary)' 
                       : isScrolled ? 'inherit' : 'white',
-                    animationDelay: `${index * 100}ms`
+                    animationDelay: `${index * 100}ms`,
+                    minHeight: '44px', // Minimum touch target size
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '12px 24px'
                   }}
                 >
                   {item.name}
