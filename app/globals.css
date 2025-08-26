@@ -116,31 +116,149 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    scroll-behavior: smooth;
+    /* Responsive scroll padding for fixed navigation */
+    scroll-padding-top: 3rem; /* 48px for mobile */
+  }
+  
   body {
     @apply bg-background text-foreground;
-    scroll-behavior: smooth;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
-    /* Ensure proper scroll positioning for anchor links */
-  html {
-    scroll-padding-top: 0; /* No padding for immediate positioning */
-  }
-  
+  /* Responsive scroll padding adjustments */
   @media (min-width: 640px) {
     html {
-      scroll-padding-top: 0; /* No padding for small screens */
+      scroll-padding-top: 4rem; /* 64px for small screens */
     }
   }
   
   @media (min-width: 1024px) {
     html {
-      scroll-padding-top: 0; /* No padding for large screens */
+      scroll-padding-top: 5rem; /* 80px for large screens */
     }
   }
   
   @media (min-width: 1280px) {
     html {
-      scroll-padding-top: 4rem; /* No padding for extra large screens */
+      scroll-padding-top: 6rem; /* 96px for extra large screens */
     }
+  }
+  
+  /* Ensure images are responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Improve touch targets on mobile */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+    opacity: 0.8;
+  }
+}
+
+/* Mobile menu animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  h1 {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3rem; /* 48px */
+    line-height: 1;
+  }
+  
+  h2 {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem;
   }
 }

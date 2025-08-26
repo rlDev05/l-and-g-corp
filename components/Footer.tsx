@@ -11,8 +11,6 @@ const footerLinks = {
   ],
 };
 
-
-
 export default function Footer() {
   return (
     <footer className="bg-[#343a40] border-t border-border">
@@ -27,7 +25,7 @@ export default function Footer() {
                 <div className="text-white font-semibold text-sm">Powering the Philippines&apos; Energy Future</div>
               </div>
               <p className="text-gray-300 text-sm mb-3 leading-relaxed text-justify">
-              L&G Energy Corp is an emerging Philippine energy trading company engaged in the import, export, and wholesale of fuel and gaseous products. Guided by innovation and commitment, we aim to become a trusted partner in meeting the country’s growing energy needs.
+              L&G Energy Corp is an emerging Philippine energy trading company engaged in the import, export, and wholesale of fuel and gaseous products. Guided by innovation and commitment, we aim to become a trusted partner in meeting the country&apos;s growing energy needs.
               </p>
               <div className="flex space-x-3">
                 <a
@@ -53,8 +51,8 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Quick Links - Centered */}
-            <div className="flex flex-col items-center justify-center md:items-start px-4 md:pl-9 lg:pl-25">
+            {/* Quick Links - Centered on mobile/tablet, 20% left padding on large screens */}
+            <div className="flex flex-col items-center justify-center md:items-start lg:pl-[20%]">
               <h3 className="text-lg font-semibold text-white mb-4 text-center md:text-left">
                 Quick Links
               </h3>
@@ -71,8 +69,6 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-
-
 
             {/* Contact Us */}
             <div className="flex flex-col">
