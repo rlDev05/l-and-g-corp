@@ -78,7 +78,7 @@ export default function Home() {
                 <div className="space-y-3">
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
                     Company{" "}
-                    <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                    <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
                       Profile
                     </span>
                   </h2>
@@ -136,7 +136,7 @@ export default function Home() {
               <div className="space-y-4">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
                   About{" "}
-                  <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                  <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
                     L&G Energy
                   </span>
                 </h2>

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { useState } from "react";
 import FadeInSection from "@/components/FadeInSection";
+import Image from "next/image";
 
 // Types
 interface Product {
@@ -141,9 +142,11 @@ const FilterButton = ({
 const ProductCard = ({ product }: { product: Product }) => (
   <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl">
     <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
-      <img 
+      <Image 
         src={product.image} 
         alt={product.title}
+        width={400}
+        height={300}
         className="w-full h-full object-cover"
         onError={(e) => {
           const target = e.target as HTMLImageElement;
@@ -177,9 +180,11 @@ const ProductCard = ({ product }: { product: Product }) => (
 const ServiceCard = ({ service }: { service: Service }) => (
   <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl">
     <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
-      <img 
+      <Image 
         src={service.image} 
         alt={service.title}
+        width={400}
+        height={300}
         className="w-full h-full object-cover"
         onError={(e) => {
           const target = e.target as HTMLImageElement;
@@ -233,7 +238,7 @@ const HeroSection = () => {
         <FadeInSection delay={200} duration={800}>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
             What We{" "}
-            <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
               Offer
             </span>
           </h1>

@@ -34,7 +34,7 @@ export default function Contact() {
           <FadeInSection delay={200} duration={800}>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
               Contact{" "}
-              <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
+              <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text">
                 Us
               </span>
             </h1>

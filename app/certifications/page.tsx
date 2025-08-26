@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import FadeInSection from "@/components/FadeInSection";
+import Image from "next/image";
 
 // Actual certifications data using your real certification images
 const certifications = [
@@ -131,7 +131,7 @@ export default function Certifications() {
           <FadeInSection delay={200} duration={800}>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
               Our{" "}
-              <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">
+              <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text">
                 Certifications
               </span>
             </h1>
@@ -191,7 +191,7 @@ export default function Certifications() {
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
                 Our{" "}
-                <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
                   Certifications
                 </span>
               </h2>
@@ -256,9 +256,11 @@ export default function Certifications() {
                    onClick={() => openModal(certification)}
                  >
                    <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
-                     <img 
+                     <Image
                        src={certification.image} 
                        alt={certification.title}
+                       width={320}
+                       height={192}
                        className="w-full h-full object-cover"
                        onError={(e) => {
                          const target = e.target as HTMLImageElement;
@@ -373,7 +375,7 @@ export default function Certifications() {
                  {selectedCertification.description}
                </p>
 
-                               {/* Image Container */}
+               {/* Image Container */}
                 <div className="mb-6 bg-gray-50 rounded-lg p-4">
                   <div className="space-y-4">
                     {selectedCertification.images && selectedCertification.images.length > 1 ? (
@@ -385,28 +387,32 @@ export default function Certifications() {
                               Page {index + 1}
                             </span>
                           </div>
-                          <div className="flex items-center justify-center">
-                            <img 
-                              src={image} 
-                              alt={`${selectedCertification.title} - Page ${index + 1}`}
-                              className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
-                              style={{
-                                maxHeight: 'min(400px, 50vh)'
-                              }}
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                              }}
-                            />
-                          </div>
+                                                      <div className="flex items-center justify-center">
+                              <Image 
+                                src={image} 
+                                alt={`${selectedCertification.title} - Page ${index + 1}`}
+                                width={800}
+                                height={600}
+                                className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
+                                style={{
+                                  maxHeight: 'min(400px, 50vh)'
+                                }}
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement;
+                                  target.style.display = 'none';
+                                }}
+                              />
+                            </div>
                         </div>
                       ))
                     ) : (
                       // Single image
                       <div className="flex items-center justify-center">
-                        <img 
+                        <Image 
                           src={selectedCertification.image} 
                           alt={selectedCertification.title}
+                          width={800}
+                          height={600}
                           className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
                           style={{
                             maxHeight: 'min(400px, 50vh)'
