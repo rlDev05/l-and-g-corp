@@ -18,9 +18,16 @@ export default function FadeInSection({
   threshold = 0.1,
 }: FadeInSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -43,13 +50,13 @@ export default function FadeInSection({
         observer.unobserve(currentRef);
       }
     };
-  }, [threshold]);
+  }, [threshold, isClient]);
 
   return (
     <div
       ref={ref}
       className={`transition-all duration-${duration} ease-out ${
-        isVisible
+        isClient && isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
       } ${className}`}
