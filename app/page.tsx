@@ -1,7 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import FadeInSection from "@/components/FadeInSection";
 
 export default function Home() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -26,16 +37,14 @@ export default function Home() {
           </FadeInSection>
           <FadeInSection delay={400} duration={800}>
             <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-              Leading Philippine energy trading company specializing in fuel
-              products and gaseous fuels. We support key industries with reliable,
-              efficient energy solutions.
+            L&G Energy Corp is an emerging Philippine energy trading company engaged in the import, export, and wholesale of fuel and gaseous products. Guided by innovation and commitment, we aim to become a trusted partner in meeting the country’s growing energy needs.
             </p>
           </FadeInSection>
           <FadeInSection delay={600} duration={800}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="#services"
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              <button
+                onClick={() => scrollToSection('company-profile')}
+                className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
               >
                 <span className="flex items-center gap-2">
                   Learn More
@@ -53,14 +62,14 @@ export default function Home() {
                     />
                   </svg>
                 </span>
-              </a>
+              </button>
             </div>
           </FadeInSection>
         </div>
       </section>
 
       {/* Company Profile Section */}
-      <section id="company-profile" className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 bg-card scroll-mt-0">
+      <section id="company-profile" className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 bg-card scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text Content */}
@@ -105,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-muted/30">
+      <section id="about-us" className="py-16 sm:py-20 lg:py-24 bg-muted/30 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 

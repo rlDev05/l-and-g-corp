@@ -57,9 +57,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-8 lg:py-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
             {/* Company Info */}
-            <div className="lg:col-span-1 flex flex-col">
+            <div className="flex flex-col">
               <div className="mb-4">
                 <div className="text-white font-bold text-lg">L&G ENERGY CORP</div>
                 <div className="text-white font-semibold text-sm">Powering the Philippines&apos; Energy Future</div>
@@ -91,14 +91,14 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div className="flex flex-col">
-              <h3 className="text-lg font-semibold text-white mb-4">
+            {/* Quick Links - Centered */}
+            <div className="flex flex-col items-center justify-center md:items-start px-4 md:pl-9 lg:pl-25">
+              <h3 className="text-lg font-semibold text-white mb-4 text-center md:text-left">
                 Quick Links
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-center md:text-left w-full">
                 {footerLinks.quickLinks.map((link) => (
-                  <li key={link.name}>
+                  <li key={link.name} className="flex justify-center md:justify-start">
                     <Link
                       href={link.href}
                       className="text-gray-200 hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
