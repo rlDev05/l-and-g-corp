@@ -60,10 +60,12 @@ export default function Navigation() {
       const target = event.target as Element;
       const mobileMenu = document.querySelector('.mobile-menu-overlay');
       const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const navbar = document.querySelector('.navbar-container');
       
       if (isMobileMenuOpen && 
           !mobileMenu?.contains(target) && 
-          !mobileMenuButton?.contains(target)) {
+          !mobileMenuButton?.contains(target) &&
+          !navbar?.contains(target)) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -107,106 +109,111 @@ export default function Navigation() {
   };
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-helvetica",
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 shadow-lg"
-          : "bg-transparent",
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-12 sm:h-16 lg:h-20 xl:h-24">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 flex items-center justify-center">
-                <Image
-                  src="/logo/lng-transparent.png"
-                  alt="L&G Corporation Logo"
-                  width={112}
-                  height={112}
-                  className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 object-cover"
-                  priority
-                />
-              </div>
-            </Link>
-          </div>
+    <>
+      <nav
+        className={cn(
+          "navbar-container fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-helvetica",
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 shadow-lg"
+            : "bg-transparent",
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-12 sm:h-16 lg:h-20 xl:h-24">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 flex items-center justify-center">
+                  <Image
+                    src="/logo/lng-transparent.png"
+                    alt="L&G Corporation Logo"
+                    width={112}
+                    height={112}
+                    className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 object-cover"
+                    priority
+                  />
+                </div>
+              </Link>
+            </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:block">
-            <div className="ml-10 flex items-baseline space-x-1 xl:space-x-2">
-              {navigation.map((item) => {
-                const isActive = pathname === item.href && !(item.name === "Home" && activeSection === "about");
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => handleLinkClick(item, e)}
-                    className={cn(
-                      "px-3 xl:px-6 py-3 text-sm xl:text-base font-medium transition-all duration-300 relative group hover:scale-105",
-                      isScrolled
-                        ? "text-black hover:text-primary"
-                        : "text-white hover:text-primary/80",
-                    )}
-                    style={{
-                      color: (isActive || (item.name === "About" && activeSection === "about")) 
-                        ? 'var(--color-primary)' 
-                        : isScrolled ? 'inherit' : 'white'
-                    }}
-                  >
-                    {item.name}
-                    <span
+            {/* Desktop Navigation */}
+            <div className="hidden lg:block">
+              <div className="ml-10 flex items-baseline space-x-1 xl:space-x-2">
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href && !(item.name === "Home" && activeSection === "about");
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={(e) => handleLinkClick(item, e)}
                       className={cn(
-                        "absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300",
-                        (isActive || (item.name === "About" && activeSection === "about"))
-                          ? "bg-primary"
-                          : "bg-transparent group-hover:bg-primary/50"
+                        "px-3 xl:px-6 py-3 text-sm xl:text-base font-medium transition-all duration-300 relative group hover:scale-105",
+                        isScrolled
+                          ? "text-black hover:text-primary"
+                          : "text-white hover:text-primary/80",
                       )}
-                    />
-                  </Link>
-                );
-              })}
+                      style={{
+                        color: (isActive || (item.name === "About" && activeSection === "about")) 
+                          ? 'var(--color-primary)' 
+                          : isScrolled ? 'inherit' : 'white'
+                      }}
+                    >
+                      {item.name}
+                      <span
+                        className={cn(
+                          "absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300",
+                          (isActive || (item.name === "About" && activeSection === "about"))
+                            ? "bg-primary"
+                            : "bg-transparent group-hover:bg-primary/50"
+                        )}
+                      />
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={cn(
+                  "mobile-menu-button relative w-10 h-10 sm:w-12 sm:h-12 p-0 hover:bg-transparent focus:bg-transparent z-50",
+                  isMobileMenuOpen && "fixed right-4 sm:right-6"
+                )}
+                aria-label="Toggle mobile menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <div className="flex flex-col items-center justify-center w-6 h-6 sm:w-7 sm:h-7 relative">
+                  <span
+                    className={cn(
+                      "block w-5 h-0.5 sm:w-6 sm:h-0.5 transition-all duration-300 origin-center",
+                      isScrolled ? "bg-black" : "bg-white",
+                      isMobileMenuOpen && "rotate-45 translate-y-1.5"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block w-5 h-0.5 sm:w-6 sm:h-0.5 transition-all duration-300 mt-1.5",
+                      isScrolled ? "bg-black" : "bg-white",
+                      isMobileMenuOpen && "opacity-0"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block w-5 h-0.5 sm:w-6 sm:h-0.5 transition-all duration-300 mt-1.5 origin-center",
+                      isScrolled ? "bg-black" : "bg-white",
+                      isMobileMenuOpen && "-rotate-45 -translate-y-1.5"
+                    )}
+                  />
+                </div>
+              </Button>
             </div>
           </div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="mobile-menu-button relative w-10 h-10 sm:w-12 sm:h-12 p-0 hover:bg-transparent focus:bg-transparent"
-              aria-label="Toggle mobile menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <div className="flex flex-col items-center justify-center w-6 h-6 sm:w-7 sm:h-7 relative">
-                <span
-                  className={cn(
-                    "block w-5 h-0.5 sm:w-6 sm:h-0.5 transition-all duration-300 origin-center",
-                    isScrolled ? "bg-black" : "bg-white",
-                    isMobileMenuOpen && "rotate-45 translate-y-1.5"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block w-5 h-0.5 sm:w-6 sm:h-0.5 transition-all duration-300 mt-1.5",
-                    isScrolled ? "bg-black" : "bg-white",
-                    isMobileMenuOpen && "opacity-0"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block w-5 h-0.5 sm:w-6 sm:h-0.5 transition-all duration-300 mt-1.5 origin-center",
-                    isScrolled ? "bg-black" : "bg-white",
-                    isMobileMenuOpen && "-rotate-45 -translate-y-1.5"
-                  )}
-                />
-              </div>
-            </Button>
-          </div>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Navigation Overlay */}
       {isClient && (
@@ -220,7 +227,8 @@ export default function Navigation() {
           style={{
             backgroundColor: isScrolled 
               ? 'rgba(255, 255, 255, 0.95)' 
-              : 'rgba(0, 0, 0, 0.9)'
+              : 'rgba(0, 0, 0, 0.9)',
+            paddingTop: '80px' // Add padding to account for the navbar height
           }}
         >
           <div className="flex flex-col justify-center items-center h-full space-y-6 sm:space-y-8 px-6">
@@ -264,6 +272,6 @@ export default function Navigation() {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
