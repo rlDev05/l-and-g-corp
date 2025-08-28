@@ -1,6 +1,7 @@
 'use client';
 
 import FadeInSection from '@/components/FadeInSection';
+import OptimizedHeroBackground from '@/components/OptimizedHeroBackground';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useState } from 'react';
 
@@ -104,63 +105,54 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 lg:pt-24">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/background/contact-bg.jpg')",
-          }}
-        />
+      <OptimizedHeroBackground
+        imagePath="/background/contact-bg.jpg"
+        alt="Contact Us Hero Background"
+        overlayOpacity={0.4}
+        className="pt-20 lg:pt-24"
+      >
+        <FadeInSection delay={200} duration={800}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
+            Contact{' '}
+            <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text">
+              Us
+            </span>
+          </h1>
+        </FadeInSection>
 
-        {/* Overlay Filter */}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+        <FadeInSection delay={400} duration={800}>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+            Get in touch with L&G Energy Corp. We&apos;re here to answer your
+            questions and discuss how we can support your energy needs.
+          </p>
+        </FadeInSection>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <FadeInSection delay={200} duration={800}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
-              Contact{' '}
-              <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text">
-                Us
+        <FadeInSection delay={600} duration={800}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => scrollToSection('contact-info')}
+              className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                Get In Touch
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </span>
-            </h1>
-          </FadeInSection>
-
-          <FadeInSection delay={400} duration={800}>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-              Get in touch with L&G Energy Corp. We&apos;re here to answer your
-              questions and discuss how we can support your energy needs.
-            </p>
-          </FadeInSection>
-
-          <FadeInSection delay={600} duration={800}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button
-                onClick={() => scrollToSection('contact-info')}
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-              >
-                <span className="flex items-center gap-2">
-                  Get In Touch
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </FadeInSection>
-        </div>
-      </section>
+            </button>
+          </div>
+        </FadeInSection>
+      </OptimizedHeroBackground>
 
       {/* Contact Information Section */}
       <section id="contact-info" className="py-12 bg-gray-50">

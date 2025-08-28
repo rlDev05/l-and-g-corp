@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import FadeInSection from "@/components/FadeInSection";
+import FadeInSection from '@/components/FadeInSection';
+import OptimizedHeroBackground from '@/components/OptimizedHeroBackground';
+import Image from 'next/image';
 
 export default function CoreValues() {
   const scrollToSection = (sectionId: string) => {
@@ -16,60 +17,55 @@ export default function CoreValues() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-12 sm:pt-16 lg:pt-20 xl:pt-24">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/background/bg-6.jpg')",
-          }}
-        />
-
-        {/* Overlay Filter */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <FadeInSection delay={200} duration={800}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
-              Mission and Vision
-            </h1>
-          </FadeInSection>
-          <FadeInSection delay={400} duration={800}>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4">
-              Discover what drives L&G Energy Corp forward and how we&apos;re committed to powering the Philippines&apos; energy future with integrity, innovation, and sustainability.
-            </p>
-          </FadeInSection>
-          <FadeInSection delay={600} duration={800}>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-              <button
-                onClick={() => scrollToSection('mission-vision')}
-                className="group bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-h-[44px] flex items-center justify-center"
-              >
-                <span className="flex items-center gap-2">
-                  Learn More
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </FadeInSection>
-        </div>
-      </section>
+      <OptimizedHeroBackground
+        imagePath="/background/bg-6.jpg"
+        alt="Mission and Vision Hero Background"
+        overlayOpacity={0.6}
+      >
+        <FadeInSection delay={200} duration={800}>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
+            Mission and Vision
+          </h1>
+        </FadeInSection>
+        <FadeInSection delay={400} duration={800}>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4">
+            Discover what drives L&G Energy Corp forward and how we&apos;re
+            committed to powering the Philippines&apos; energy future with
+            integrity, innovation, and sustainability.
+          </p>
+        </FadeInSection>
+        <FadeInSection delay={600} duration={800}>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+            <button
+              onClick={() => scrollToSection('mission-vision')}
+              className="group bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-h-[44px] flex items-center justify-center"
+            >
+              <span className="flex items-center gap-2">
+                Learn More
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </FadeInSection>
+      </OptimizedHeroBackground>
 
       {/* Mission & Vision Section */}
-      <section id="mission-vision" className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-card via-card to-muted/20 scroll-mt-12 sm:scroll-mt-16 lg:scroll-mt-20 xl:scroll-mt-24">
+      <section
+        id="mission-vision"
+        className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-card via-card to-muted/20 scroll-mt-12 sm:scroll-mt-16 lg:scroll-mt-20 xl:scroll-mt-24"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
             {/* Company Mission and Vision - Takes up 2 columns */}
@@ -84,13 +80,24 @@ export default function CoreValues() {
                   </div>
                   <div className="space-y-4 text-muted-foreground">
                     <p className="text-sm sm:text-base leading-relaxed text-justify">
-                      L&G Energy Corp aims to become a nationally recognized company with the capability to compete at the international level — known for its reliability and excellence in providing logistics and fuel oil solutions.
+                      L&G Energy Corp aims to become a nationally recognized
+                      company with the capability to compete at the
+                      international level — known for its reliability and
+                      excellence in providing logistics and fuel oil solutions.
                     </p>
                     <p className="text-sm sm:text-base leading-relaxed text-justify">
-                      We envision a company that is both nationally and globally competitive, achieving sustainable income and profitability, backed by strong management that upholds global standards and best practices. Our operations are built on quality, efficiency, and integrity.
+                      We envision a company that is both nationally and globally
+                      competitive, achieving sustainable income and
+                      profitability, backed by strong management that upholds
+                      global standards and best practices. Our operations are
+                      built on quality, efficiency, and integrity.
                     </p>
                     <p className="text-sm sm:text-base leading-relaxed text-justify">
-                      Through reliable land and sea logistics, L&G Energy Corp ensures timely and efficient delivery, supported by a well-structured and dependable operational system — earning the trust of partners and clients across all markets we serve.
+                      Through reliable land and sea logistics, L&G Energy Corp
+                      ensures timely and efficient delivery, supported by a
+                      well-structured and dependable operational system —
+                      earning the trust of partners and clients across all
+                      markets we serve.
                     </p>
                   </div>
                 </div>
@@ -152,6 +159,6 @@ export default function CoreValues() {
           </div>
         </div>
       </section>
-     </div>
-   );
- }
+    </div>
+  );
+}
