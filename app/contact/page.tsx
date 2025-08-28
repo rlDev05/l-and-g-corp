@@ -81,6 +81,7 @@ export default function Contact() {
           message: result.error || 'Something went wrong. Please try again.',
         });
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setSubmitStatus({
         type: 'error',

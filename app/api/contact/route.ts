@@ -290,7 +290,7 @@ export async function POST(request: NextRequest) {
       data?: unknown;
       error?: { statusCode?: number; message?: string };
     };
-    const { data, error } = result;
+    const { error } = result;
 
     if (error) {
       console.error('Resend error:', error);
