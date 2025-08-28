@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 // Types
 interface Product {
@@ -30,8 +30,8 @@ interface Service {
   emoji: string;
 }
 
-// Data
-const products: Product[] = [
+// Constants
+const PRODUCTS: Product[] = [
   {
     id: 'lpg',
     title: 'Liquefied Petroleum Gas (LPG)',
@@ -87,7 +87,7 @@ const products: Product[] = [
   },
 ];
 
-const services: Service[] = [
+const SERVICES: Service[] = [
   {
     id: 'retail',
     title: 'Retail Distribution',
@@ -117,12 +117,22 @@ const services: Service[] = [
   },
 ];
 
-// Constants
 const FILTER_OPTIONS = [
   { value: 'all', label: 'All Offerings' },
   { value: 'products', label: 'Products' },
   { value: 'services', label: 'Services' },
 ] as const;
+
+// Utility function for smooth scrolling
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
 
 // Components
 const FilterButton = ({
@@ -148,12 +158,12 @@ const FilterButton = ({
   </button>
 );
 
-const ProductCard = ({ product }: { product: Product }) => (
+const OfferingCard = ({ item }: { item: Product | Service }) => (
   <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl">
     <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
       <Image
-        src={product.image}
-        alt={product.title}
+        src={item.image}
+        alt={item.title}
         width={400}
         height={300}
         className="w-full h-full object-cover"
@@ -163,52 +173,16 @@ const ProductCard = ({ product }: { product: Product }) => (
           target.nextElementSibling?.classList.remove('opacity-20');
         }}
       />
-      <div className="text-4xl opacity-20 absolute">{product.emoji}</div>
+      <div className="text-4xl opacity-20 absolute">{item.emoji}</div>
     </div>
     <CardContent className="pt-0 px-5 pb-5">
       <div className="text-center mb-3">
         <CardTitle className="text-base font-bold text-gray-900 leading-tight text-center">
-          {product.title}
+          {item.title}
         </CardTitle>
       </div>
       <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center">
-        {product.description}
-      </CardDescription>
-      <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
-      <div className="text-center">
-        <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-          Available
-        </span>
-      </div>
-    </CardContent>
-  </Card>
-);
-
-const ServiceCard = ({ service }: { service: Service }) => (
-  <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl">
-    <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
-      <Image
-        src={service.image}
-        alt={service.title}
-        width={400}
-        height={300}
-        className="w-full h-full object-cover"
-        onError={(e) => {
-          const target = e.target as HTMLImageElement;
-          target.style.display = 'none';
-          target.nextElementSibling?.classList.remove('opacity-20');
-        }}
-      />
-      <div className="text-4xl opacity-20 absolute">{service.emoji}</div>
-    </div>
-    <CardContent className="pt-0 px-5 pb-5">
-      <div className="text-center mb-3">
-        <CardTitle className="text-base font-bold text-gray-900 leading-tight text-center">
-          {service.title}
-        </CardTitle>
-      </div>
-      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center">
-        {service.description}
+        {item.description}
       </CardDescription>
       <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
       <div className="text-center">
@@ -221,23 +195,9 @@ const ServiceCard = ({ service }: { service: Service }) => (
 );
 
 const HeroSection = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
+  const handleScrollToSection = useCallback(() => {
+    scrollToSection('products-services');
   }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    if (isClient) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    }
-  };
 
   return (
     <OptimizedHeroBackground
@@ -271,7 +231,7 @@ const HeroSection = () => {
       <FadeInSection delay={800} duration={800}>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
-            onClick={() => scrollToSection('products-services')}
+            onClick={handleScrollToSection}
             className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
           >
             <span className="flex items-center gap-2">
@@ -335,13 +295,13 @@ const ProductsSection = () => (
       </div>
     </FadeInSection>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {products.map((product, index) => (
+      {PRODUCTS.map((product, index) => (
         <FadeInSection
           key={product.id}
           delay={400 + index * 100}
           duration={800}
         >
-          <ProductCard product={product} />
+          <OfferingCard item={product} />
         </FadeInSection>
       ))}
     </div>
@@ -361,13 +321,13 @@ const ServicesSection = () => (
       </div>
     </FadeInSection>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {services.map((service, index) => (
+      {SERVICES.map((service, index) => (
         <FadeInSection
           key={service.id}
           delay={400 + index * 100}
           duration={800}
         >
-          <ServiceCard service={service} />
+          <OfferingCard item={service} />
         </FadeInSection>
       ))}
     </div>
@@ -377,6 +337,20 @@ const ServicesSection = () => (
 // Main Component
 export default function WhatWeOffer() {
   const [activeFilter, setActiveFilter] = useState('all');
+
+  const handleFilterChange = useCallback((filter: string) => {
+    setActiveFilter(filter);
+  }, []);
+
+  const showProducts = useMemo(
+    () => activeFilter === 'all' || activeFilter === 'products',
+    [activeFilter]
+  );
+
+  const showServices = useMemo(
+    () => activeFilter === 'all' || activeFilter === 'services',
+    [activeFilter]
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -389,16 +363,11 @@ export default function WhatWeOffer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FilterNavigation
             activeFilter={activeFilter}
-            onFilterChange={setActiveFilter}
+            onFilterChange={handleFilterChange}
           />
 
-          {(activeFilter === 'all' || activeFilter === 'products') && (
-            <ProductsSection />
-          )}
-
-          {(activeFilter === 'all' || activeFilter === 'services') && (
-            <ServicesSection />
-          )}
+          {showProducts && <ProductsSection />}
+          {showServices && <ServicesSection />}
         </div>
       </section>
     </div>
