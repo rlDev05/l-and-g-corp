@@ -49,8 +49,8 @@ const CERTIFICATIONS: Certification[] = [
       'L&G Energy Corporation - BIR Certificate of Registration (Pages 1 & 2)',
     description:
       'Complete BIR certificate of registration for corporate business operations including both pages',
-    image: '/certifications/cor-2.png',
-    images: ['/certifications/cor-2.png', '/certifications/cor-1.png'],
+    image: '/certifications/cor-1.png',
+    images: ['/certifications/cor-1.png', '/certifications/cor-2.png'],
     category: 'Corporate Registration',
     issueDate: 'June 11, 2025',
     expiryDate: 'February 20, 2027',
@@ -126,7 +126,8 @@ const useCarousel = (items: Certification[]) => {
 
   const getVisibleItems = useCallback(() => {
     const visible = [];
-    for (let i = 0; i < 3; i++) {
+    const maxVisible = Math.min(3, items.length);
+    for (let i = 0; i < maxVisible; i++) {
       const index = (currentIndex + i) % items.length;
       visible.push(items[index]);
     }
@@ -147,20 +148,26 @@ const useModal = () => {
   const [selectedCertification, setSelectedCertification] =
     useState<Certification | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const openModal = useCallback((certification: Certification) => {
+    setIsLoading(true);
     setSelectedCertification(certification);
     setIsModalOpen(true);
+    // Simulate loading time for better UX
+    setTimeout(() => setIsLoading(false), 300);
   }, []);
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedCertification(null);
+    setIsLoading(false);
   }, []);
 
   return {
     selectedCertification,
     isModalOpen,
+    isLoading,
     openModal,
     closeModal,
   };
@@ -267,7 +274,9 @@ const CertificationCard = ({
         alt={certification.title}
         width={400}
         height={300}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        priority={isActive}
+        loading={isActive ? 'eager' : 'lazy'}
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           target.style.display = 'none';
@@ -290,7 +299,7 @@ const CertificationCard = ({
           {certification.title}
         </CardTitle>
       </div>
-      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center">
+      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center line-clamp-2">
         {certification.description}
       </CardDescription>
       <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
@@ -467,10 +476,12 @@ const ModalImage = ({
         alt={alt}
         width={800}
         height={600}
-        className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md"
+        className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md transition-all duration-300 hover:shadow-lg"
         style={{
           maxHeight: 'min(400px, 50vh)',
         }}
+        priority
+        quality={90}
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           target.style.display = 'none';
@@ -650,8 +661,13 @@ const CertificationModal = ({
 
 // Main Component
 export default function Certifications() {
-  const { selectedCertification, isModalOpen, openModal, closeModal } =
-    useModal();
+  const {
+    selectedCertification,
+    isModalOpen,
+    isLoading,
+    openModal,
+    closeModal,
+  } = useModal();
 
   return (
     <div className="min-h-screen bg-background">
@@ -663,6 +679,19 @@ export default function Certifications() {
         isOpen={isModalOpen}
         onClose={closeModal}
       />
+      {/* Loading Overlay */}
+      {isLoading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-lg p-6 shadow-xl">
+            <div className="flex items-center space-x-3">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+              <span className="text-gray-700 font-medium">
+                Loading certificate...
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
