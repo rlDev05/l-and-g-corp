@@ -93,7 +93,10 @@ const SectionTitle = ({
   highlightedWord: string;
 }) => (
   <div className="space-y-3">
-    <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-card-foreground text-center lg:text-left">
+    <h2
+      className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-card-foreground text-center lg:text-left"
+      style={{ marginTop: '5%' }}
+    >
       {title}{' '}
       <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
         {highlightedWord}
@@ -105,7 +108,7 @@ const SectionTitle = ({
 
 const TeamMemberCard = ({ member }: { member: (typeof TEAM_MEMBERS)[0] }) => (
   <div className="text-center group">
-    <div className="relative mb-4 sm:mb-6">
+    <div className="relative mb-2 sm:mb-3">
       <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 ring-2 ring-primary/20 group-hover:ring-primary/40">
         <Image
           src={member.image}
@@ -116,7 +119,7 @@ const TeamMemberCard = ({ member }: { member: (typeof TEAM_MEMBERS)[0] }) => (
         />
       </div>
     </div>
-    <div className="space-y-2">
+    <div className="space-y-1">
       <h4 className="text-base sm:text-lg font-bold text-card-foreground">
         {member.name}
       </h4>
