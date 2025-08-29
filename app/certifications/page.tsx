@@ -49,7 +49,7 @@ const CERTIFICATIONS: Certification[] = [
       'L&G Energy Corporation - BIR Certificate of Registration (Pages 1 & 2)',
     description:
       'Complete BIR certificate of registration for corporate business operations including both pages',
-    image: '/certifications/cor-1.png',
+    image: '/certifications/cor-2.png',
     images: ['/certifications/cor-2.png', '/certifications/cor-1.png'],
     category: 'Corporate Registration',
     issueDate: 'June 11, 2025',
