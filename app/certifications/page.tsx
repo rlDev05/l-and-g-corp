@@ -50,7 +50,7 @@ const CERTIFICATIONS: Certification[] = [
     description:
       'Complete BIR certificate of registration for corporate business operations including both pages',
     image: '/certifications/cor-1.png',
-    images: ['/certifications/cor-1.png', '/certifications/cor-2.png'],
+    images: ['/certifications/cor-2.png', '/certifications/cor-1.png'],
     category: 'Corporate Registration',
     issueDate: 'June 11, 2025',
     expiryDate: 'February 20, 2027',
