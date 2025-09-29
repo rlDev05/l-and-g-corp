@@ -34,7 +34,7 @@ const SUBJECT_OPTIONS = [
 const CONTACT_INFO = {
   address:
     'Unit 401, PSC Building, 2410, Hen. Belarmino St. Bangkal, Makati City Philippines',
-  phones: ['+63 962 687 6432', '+63 918 935 8977'],
+  phones: ['+63 917 827 7260', '+63 918 935 8977'],
   emails: ['rlorenzo@l-and-gcorp.com', 'arrangalvan@l-and-gcorp.com'],
   businessHours: {
     weekdays: 'Monday - Friday: 8:00 AM - 6:00 PM',
@@ -588,14 +588,10 @@ export default function Contact() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}
-            <FadeInSection delay={400} duration={800}>
-              <ContactInformation />
-            </FadeInSection>
+            <ContactInformation />
 
             {/* Contact Form */}
-            <FadeInSection delay={600} duration={800}>
-              <ContactForm />
-            </FadeInSection>
+            <ContactForm />
           </div>
         </div>
       </section>
