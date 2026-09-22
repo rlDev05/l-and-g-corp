@@ -129,7 +129,7 @@ export default function Footer() {
                     href="tel:+639189358977"
                     className="text-gray-200 text-sm hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
                   >
-                    +63 918 935 8977
+                    +63 917 542 5527
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -142,7 +142,7 @@ export default function Footer() {
                     href="mailto:rlorenzo@l-and-gcorp.com"
                     className="text-gray-200 text-sm hover:text-[#D4A54A] transition-colors duration-300 cursor-pointer"
                   >
-                    rlorenzo@l-and-gcorp.com
+                    ccabalonga@l-and-gcorp.com
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">

@@ -19,6 +19,12 @@ const TEAM_MEMBERS = [
     image: '/members/sir-arran.jpg',
     alt: 'Arran Lester P. Galvan - Vice President',
   },
+  {
+    name: 'Cornelius C. Cabalonga',
+    position: 'General Manager',
+    image: '/members/sir-cornelius.jpg',
+    alt: 'Cornelius C. Cabalonga - General Manager',
+  },
 ];
 
 // Utility function for smooth scrolling
@@ -136,7 +142,7 @@ const MissionVisionSection = () => (
     className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-card via-card to-muted/20 scroll-mt-12 sm:scroll-mt-16 lg:scroll-mt-20 xl:scroll-mt-24"
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 sm:gap-12 lg:gap-16">
         {/* Company Mission and Vision - Takes up 2 columns */}
         <div className="lg:col-span-2">
           <FadeInSection delay={200} duration={800}>
@@ -173,7 +179,7 @@ const MissionVisionSection = () => (
         {/* Team Members - Takes up 1 column */}
         <div className="lg:col-span-1">
           <FadeInSection delay={400} duration={800}>
-            <div className="space-y-6 sm:space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {TEAM_MEMBERS.map((member) => (
                 <TeamMemberCard key={member.name} member={member} />
               ))}
