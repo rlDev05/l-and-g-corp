@@ -1,7 +1,6 @@
 'use client';
 
 import FadeInSection from '@/components/FadeInSection';
-import OptimizedHeroBackground from '@/components/OptimizedHeroBackground';
 import Image from 'next/image';
 import { useCallback } from 'react';
 
@@ -44,51 +43,54 @@ const HeroSection = () => {
     scrollToSection('mission-vision');
   }, []);
 
-  return (
-    <OptimizedHeroBackground
-      imagePath="/background/bg-6.jpg"
-      alt="Mission and Vision Hero Background"
-      overlayOpacity={0.6}
-    >
-      <FadeInSection delay={200} duration={800}>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
-          Mission and Vision
-        </h1>
-      </FadeInSection>
-      <FadeInSection delay={400} duration={800}>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4">
-          Discover what drives L&G Energy Corp forward and how we&apos;re
-          committed to powering the Philippines&apos; energy future with
-          integrity, innovation, and sustainability.
-        </p>
-      </FadeInSection>
-      <FadeInSection delay={600} duration={800}>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-          <button
-            onClick={handleScrollToSection}
-            className="group bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-h-[44px] flex items-center justify-center"
-          >
-            <span className="flex items-center gap-2">
-              Learn More
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      </FadeInSection>
-    </OptimizedHeroBackground>
-  );
+  // return (
+  //   <OptimizedHeroBackground
+  //     imagePath="/background/bg-6.jpg"
+  //     alt="Mission and Vision Hero Background"
+  //     overlayOpacity={0.5}
+  //   >
+  //     <FadeInSection delay={200} duration={800}>
+  //       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight text-white">
+  //         Board of Directors
+  //       </h1>
+  //     </FadeInSection>
+  //     <FadeInSection delay={400} duration={800}>
+  //       <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4 text-justify">
+  //         Our Board of Directors provides strategic leadership and corporate
+  //         oversight, guiding the organization toward sustainable growth and
+  //         long-term success. With diverse experience and expertise, the Board is
+  //         committed to upholding strong governance, responsible decision-making,
+  //         and the company’s core values while creating lasting value for our
+  //         stakeholders.
+  //       </p>
+  //     </FadeInSection>
+  //     <FadeInSection delay={600} duration={800}>
+  //       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+  //         <button
+  //           onClick={handleScrollToSection}
+  //           className="group bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-h-[44px] flex items-center justify-center"
+  //         >
+  //           <span className="flex items-center gap-2">
+  //             Learn More
+  //             <svg
+  //               className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+  //               fill="none"
+  //               stroke="currentColor"
+  //               viewBox="0 0 24 24"
+  //             >
+  //               <path
+  //                 strokeLinecap="round"
+  //                 strokeLinejoin="round"
+  //                 strokeWidth={2}
+  //                 d="M9 5l7 7-7 7"
+  //               />
+  //             </svg>
+  //           </span>
+  //         </button>
+  //       </div>
+  //     </FadeInSection>
+  //   </OptimizedHeroBackground>
+  // );
 };
 
 const SectionTitle = ({
@@ -195,7 +197,6 @@ const MissionVisionSection = () => (
 export default function CoreValues() {
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection />
       <MissionVisionSection />
     </div>
   );

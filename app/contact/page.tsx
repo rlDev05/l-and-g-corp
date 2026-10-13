@@ -1,7 +1,5 @@
 'use client';
 
-import FadeInSection from '@/components/FadeInSection';
-import OptimizedHeroBackground from '@/components/OptimizedHeroBackground';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCallback, useState } from 'react';
 
@@ -154,57 +152,6 @@ const HeroSection = () => {
   const handleScrollToSection = useCallback(() => {
     scrollToSection('contact-info');
   }, []);
-
-  return (
-    <OptimizedHeroBackground
-      imagePath="/background/contact-bg.jpg"
-      alt="Contact Us Hero Background"
-      overlayOpacity={0.4}
-      className="pt-20 lg:pt-24"
-    >
-      <FadeInSection delay={200} duration={800}>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
-          Contact{' '}
-          <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text">
-            Us
-          </span>
-        </h1>
-      </FadeInSection>
-
-      <FadeInSection delay={400} duration={800}>
-        <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-          Get in touch with L&G Energy Corp. We&apos;re here to answer your
-          questions and discuss how we can support your energy needs.
-        </p>
-      </FadeInSection>
-
-      <FadeInSection delay={600} duration={800}>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={handleScrollToSection}
-            className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-          >
-            <span className="flex items-center gap-2">
-              Get In Touch
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      </FadeInSection>
-    </OptimizedHeroBackground>
-  );
 };
 
 const ContactInfoItem = ({
@@ -221,7 +168,7 @@ const ContactInfoItem = ({
       {icon}
     </div>
     <div>
-      <h4 className="font-semibold text-gray-900 mb-1 text-sm">{title}</h4>
+      <h4 className="font-semibold text-white mb-1 text-sm">{title}</h4>
       {children}
     </div>
   </div>
@@ -229,16 +176,14 @@ const ContactInfoItem = ({
 
 const ContactInformation = () => (
   <div className="space-y-6">
-    <div className="space-y-3">
-      <h3 className="text-xl font-bold text-gray-900">Contact Information</h3>
-      <p className="text-gray-600 leading-relaxed text-sm">
+    <div className="space-y-4 border-1 p-10 rounded-xl bg-gradient-to-br from-black to-[#b27e1b] shadow-xl">
+      {/* Address */}
+      <h3 className="text-xl font-bold text-white">Our Contact</h3>
+      <div className="w-16 h-1 bg-primary rounded-full"></div>
+      <p className="text-gray-300 leading-relaxed text-sm mb-8">
         Reach out to us through any of the following channels. Our team is ready
         to assist you with your energy requirements.
       </p>
-    </div>
-
-    <div className="space-y-4">
-      {/* Address */}
       <ContactInfoItem
         icon={
           <svg
@@ -251,7 +196,7 @@ const ContactInformation = () => (
         }
         title="Office Address"
       >
-        <p className="text-gray-600 leading-relaxed text-sm">
+        <p className="text-gray-300 leading-relaxed text-sm">
           {CONTACT_INFO.address}
         </p>
       </ContactInfoItem>
@@ -274,7 +219,7 @@ const ContactInformation = () => (
             <a
               key={phone}
               href={`tel:${phone}`}
-              className="block text-gray-600 hover:text-primary transition-colors duration-300 text-sm"
+              className="block text-gray-300 hover:text-primary transition-colors duration-300 text-sm"
             >
               {phone}
             </a>
@@ -300,7 +245,7 @@ const ContactInformation = () => (
             <a
               key={email}
               href={`mailto:${email}`}
-              className="block text-gray-600 hover:text-primary transition-colors duration-300 text-sm"
+              className="block text-gray-300 hover:text-primary transition-colors duration-300 text-sm"
             >
               {email}
             </a>
@@ -316,12 +261,12 @@ const ContactInformation = () => (
             fill="currentColor"
             viewBox="0 0 24 24"
           >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" />
           </svg>
         }
         title="Business Hours"
       >
-        <p className="text-gray-600 text-sm">
+        <p className="text-gray-300 text-sm">
           {CONTACT_INFO.businessHours.weekdays}
           <br />
           {CONTACT_INFO.businessHours.weekends}
@@ -361,7 +306,7 @@ const FormField = ({
   <div>
     <label
       htmlFor={name}
-      className="block text-xs font-medium text-gray-700 mb-1"
+      className="block text-xs font-semibold text-gray-600 mb-1"
     >
       {label} {required && '*'}
     </label>
@@ -421,22 +366,23 @@ const ContactForm = () => {
 
   return (
     <div className="space-y-4">
-      <div className="space-y-3">
-        <h3 className="text-xl font-bold text-gray-900">Send Us a Message</h3>
-        <p className="text-gray-600 leading-relaxed text-sm">
-          Have questions about our services? Fill out the form below and
-          we&apos;ll get back to you as soon as possible.
-        </p>
-      </div>
-
       <form onSubmit={handleSubmit}>
         <Card className="border-0 shadow-lg">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-lg text-gray-900">
-              Contact Form
+          <CardHeader className="pb-0">
+            <CardTitle className="text-lg text-gray">
+              <div className="space-y-3">
+                <h3 className="text-md font-bold text-gray-900 mt-10">
+                  Send Us a Message
+                </h3>
+                <div className="w-16 h-1 bg-primary rounded-full"></div>
+                <p className="text-gray-500 font-normal leading-relaxed text-sm">
+                  Have questions about our services? Fill out the form below and
+                  we&apos;ll get back to you as soon as possible.
+                </p>
+              </div>
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-5">
             {/* Status Message */}
             {submitStatus.type && (
               <div
@@ -530,7 +476,7 @@ const ContactForm = () => {
               className={`w-full py-2 px-4 rounded-lg font-semibold transition-all duration-300 transform shadow-lg text-sm ${
                 isSubmitting
                   ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 hover:shadow-xl'
+                  : 'bg-primary hover:text-primary-foreground hover:bg-black hover:scale-98 hover:shadow-xl cursor-pointer'
               }`}
             >
               {isSubmitting ? (
@@ -572,19 +518,17 @@ const ContactForm = () => {
 export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection />
-
       {/* Contact Information Section */}
       <section id="contact-info" className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection delay={200} duration={800}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-13">
+          {/* <FadeInSection delay={200} duration={800}>
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 mt-20">
                 Get In Touch
               </h2>
               <div className="w-16 h-1 bg-primary rounded-full mx-auto"></div>
             </div>
-          </FadeInSection>
+          </FadeInSection> */}
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}

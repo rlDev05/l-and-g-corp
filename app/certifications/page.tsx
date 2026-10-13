@@ -1,15 +1,8 @@
 'use client';
 
 import FadeInSection from '@/components/FadeInSection';
-import OptimizedHeroBackground from '@/components/OptimizedHeroBackground';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from '@/components/ui/card';
 import Image from 'next/image';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 // Types
 interface Certification {
@@ -26,7 +19,29 @@ interface Certification {
   issuingAuthority: string;
 }
 
-// Constants
+// Team Members
+const TEAM_MEMBERS = [
+  {
+    name: 'Rayner C. Lorenzo',
+    position: 'President',
+    image: '/members/sir-rayner.png',
+    alt: 'Rayner C. Lorenzo - President',
+  },
+  {
+    name: 'Arran Lester P. Galvan',
+    position: 'Vice President',
+    image: '/members/sir-arran.jpg',
+    alt: 'Arran Lester P. Galvan - Vice President',
+  },
+  {
+    name: 'Cornelius C. Cabalonga',
+    position: 'General Manager',
+    image: '/members/sir-cornelius.jpg',
+    alt: 'Cornelius C. Cabalonga - General Manager',
+  },
+];
+
+// Certifications
 const CERTIFICATIONS: Certification[] = [
   {
     id: 1,
@@ -104,46 +119,7 @@ const CERTIFICATIONS: Certification[] = [
   },
 ];
 
-// Custom hook for carousel management
-const useCarousel = (items: Certification[]) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
-  }, [items.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
-    );
-  }, [items.length]);
-
-  const goToSlide = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
-
-  const getVisibleItems = useCallback(() => {
-    const visible = [];
-    const maxVisible = Math.min(3, items.length);
-    for (let i = 0; i < maxVisible; i++) {
-      const index = (currentIndex + i) % items.length;
-      visible.push(items[index]);
-    }
-    return visible;
-  }, [currentIndex, items]);
-
-  return {
-    currentIndex,
-    nextSlide,
-    prevSlide,
-    goToSlide,
-    getVisibleItems,
-  };
-};
-
-// Custom hook for modal management
+// Modal Hook
 const useModal = () => {
   const [selectedCertification, setSelectedCertification] =
     useState<Certification | null>(null);
@@ -154,8 +130,8 @@ const useModal = () => {
     setIsLoading(true);
     setSelectedCertification(certification);
     setIsModalOpen(true);
-    // Simulate loading time for better UX
-    setTimeout(() => setIsLoading(false), 300);
+
+    window.setTimeout(() => setIsLoading(false), 300);
   }, []);
 
   const closeModal = useCallback(() => {
@@ -164,95 +140,51 @@ const useModal = () => {
     setIsLoading(false);
   }, []);
 
+  const changeCertificate = useCallback((certification: Certification) => {
+    setSelectedCertification(certification);
+  }, []);
+
   return {
     selectedCertification,
     isModalOpen,
     isLoading,
     openModal,
     closeModal,
+    changeCertificate,
   };
 };
 
-// Components
-const HeroSection = () => {
-  const handleScrollToSection = useCallback(() => {
-    const element = document.getElementById('certifications-carousel');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, []);
+// Company Introduction
+const CompanyIntroduction = () => (
+  <FadeInSection delay={600} duration={800} className="bg-card">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-25 lg:pt-40 mb-0">
+      <div className="space-y-6">
+        <div className="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed font-light space-y-4 sm:space-y-6 px-6 lg:px-0 text-center lg:text-justify">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
+            Our{' '}
+            <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
+              Certifications
+            </span>
+          </h2>
+          <div className="w-20 h-1 bg-primary rounded-full mb-8 mx-auto lg:mx-0" />
+        </div>
 
-  return (
-    <OptimizedHeroBackground
-      imagePath="/background/certif-bg.jpg"
-      alt="Certifications Hero Background"
-      overlayOpacity={0.6}
-      className="pt-20 lg:pt-24"
-    >
-      <FadeInSection delay={200} duration={800}>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
-          Our{' '}
-          <span className="text-primary-foreground bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text">
-            Certifications
-          </span>
-        </h1>
-      </FadeInSection>
-      <FadeInSection delay={400} duration={800}>
-        <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+        <p className="text-base sm:text-lg text-muted-foreground mx-auto text-justify max-w-2xl pb-25">
           L&G Energy Corp. maintains the highest standards of quality, safety,
           and environmental responsibility through our comprehensive
-          certification portfolio.
-        </p>
-      </FadeInSection>
-      <FadeInSection delay={600} duration={800}>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={handleScrollToSection}
-            className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-          >
-            <span className="flex items-center gap-2">
-              View Certifications
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      </FadeInSection>
-    </OptimizedHeroBackground>
-  );
-};
-
-const CompanyIntroduction = () => (
-  <section className="py-16 sm:py-20 lg:py-24 bg-card">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div className="space-y-6">
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-          Our commitment to excellence is demonstrated through our comprehensive
-          certification portfolio. These certifications validate our adherence
-          to international standards in quality management, environmental
+          certification portfolio. Our commitment to excellence is demonstrated
+          through these certifications, which validate our adherence to
+          international standards in quality management, environmental
           responsibility, occupational health and safety, and industry-specific
-          requirements.
+          requirements. Trust in our certified processes and commitment to
+          continuous improvement.
         </p>
-        <div className="text-xl sm:text-2xl font-bold text-card-foreground">
-          Trust in our certified processes and commitment to continuous
-          improvement.
-        </div>
       </div>
     </div>
-  </section>
+  </FadeInSection>
 );
 
+// Certification Card
 const CertificationCard = ({
   certification,
   isActive,
@@ -262,397 +194,251 @@ const CertificationCard = ({
   isActive: boolean;
   onClick: () => void;
 }) => (
-  <Card
-    className={`group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0 shadow-md bg-white overflow-hidden rounded-xl w-80 ${
-      isActive ? 'opacity-100' : 'opacity-70'
-    }`}
+  <div
     onClick={onClick}
+    className="group w-full max-w-md mx-auto cursor-pointer text-center"
   >
-    <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
+    {' '}
+    {/* Certificate Image with Hover Overlay */}{' '}
+    <div className="relative w-full aspect-[3/4] max-h-[560px] flex items-center justify-center overflow-hidden rounded-2xl">
+      {' '}
       <Image
         src={certification.image}
         alt={certification.title}
         width={400}
-        height={300}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        height={540}
+        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         priority={isActive}
-        loading={isActive ? 'eager' : 'lazy'}
-        onError={(e) => {
-          const target = e.target as HTMLImageElement;
-          target.style.display = 'none';
-          target.nextElementSibling?.classList.remove('opacity-20');
-        }}
-      />
-      <div className="text-4xl opacity-20 absolute">📜</div>
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg font-semibold">
-            Click to View
-          </div>
-        </div>
-      </div>
-    </div>
-    <CardContent className="pt-0 px-5 pb-5">
-      <div className="text-center mb-3">
-        <CardTitle className="text-base font-bold text-gray-900 leading-tight text-center">
-          {certification.title}
-        </CardTitle>
-      </div>
-      <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3 text-center line-clamp-2">
-        {certification.description}
-      </CardDescription>
-      <div className="w-8 h-0.5 bg-primary mx-auto mb-3 rounded-full"></div>
-      <div className="text-center">
-        <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-          {certification.category}
-        </span>
-      </div>
-    </CardContent>
-  </Card>
-);
-
-const CarouselNavigation = ({
-  onPrev,
-  onNext,
-}: {
-  onPrev: () => void;
-  onNext: () => void;
-}) => (
-  <>
-    <button
-      onClick={onPrev}
-      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-      aria-label="Previous certification"
-    >
-      <svg
-        className="w-6 h-6 group-hover:-translate-x-1 transition-transform"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 19l-7-7 7-7"
-        />
-      </svg>
-    </button>
-
-    <button
-      onClick={onNext}
-      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-      aria-label="Next certification"
-    >
-      <svg
-        className="w-6 h-6 group-hover:translate-x-1 transition-transform"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5l7 7-7 7"
-        />
-      </svg>
-    </button>
-  </>
-);
-
-const CarouselIndicators = ({
-  total,
-  current,
-  onSelect,
-}: {
-  total: number;
-  current: number;
-  onSelect: (index: number) => void;
-}) => (
-  <div className="flex justify-center mt-8 space-x-2">
-    {Array.from({ length: total }, (_, index) => (
-      <button
-        key={index}
-        onClick={() => onSelect(index)}
-        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-          index === current ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'
-        }`}
-        aria-label={`Go to certification ${index + 1}`}
-      />
-    ))}
+      />{' '}
+      {/* Hover Overlay */}{' '}
+      <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/50 group-hover:opacity-100">
+        {' '}
+        <span className="rounded-full px-5 py-2 text-sm font-semibold text-white transition-transform duration-300 group-hover:scale-100 scale-95">
+          {' '}
+          Click to view{' '}
+        </span>{' '}
+      </div>{' '}
+    </div>{' '}
+    {/* Certificate Category */}{' '}
+    <p className="inline-block text-sm font-semibold text-primary bg-primary/10 px-5 py-1 rounded-full mt-3">
+      {' '}
+      {certification.category}{' '}
+    </p>{' '}
+    {/* Certificate Title */}{' '}
+    <h4 className="mt-2 text-xl font-semibold text-gray-900">
+      {' '}
+      {certification.title}{' '}
+    </h4>{' '}
   </div>
 );
 
-const CertificationsCarousel = ({
+const CertificationsGrid = ({
   onOpenModal,
 }: {
   onOpenModal: (certification: Certification) => void;
-}) => {
-  const { currentIndex, nextSlide, prevSlide, goToSlide, getVisibleItems } =
-    useCarousel(CERTIFICATIONS);
-
-  const visibleCertifications = useMemo(
-    () => getVisibleItems(),
-    [getVisibleItems]
-  );
-
-  return (
-    <section
-      id="certifications-carousel"
-      className="py-16 sm:py-20 lg:py-24 bg-muted/30"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 lg:mb-20">
-          <div className="space-y-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
-              Our{' '}
-              <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
-                Certifications
-              </span>
-            </h2>
-            <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
-          </div>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-8 leading-relaxed">
-            Click on any certification to view the full image
-          </p>
-        </div>
-
-        {/* Carousel Container */}
-        <div className="relative">
-          <CarouselNavigation onPrev={prevSlide} onNext={nextSlide} />
-
-          {/* Carousel Cards */}
-          <div className="flex justify-center items-center gap-6 lg:gap-8 px-16">
-            {visibleCertifications.map((certification, index) => (
-              <FadeInSection
-                key={certification.id}
-                delay={200 + index * 100}
-                duration={800}
-              >
-                <CertificationCard
-                  certification={certification}
-                  isActive={index === 0}
-                  onClick={() => onOpenModal(certification)}
-                />
-              </FadeInSection>
-            ))}
-          </div>
-
-          {/* Carousel Indicators */}
-          <CarouselIndicators
-            total={CERTIFICATIONS.length}
-            current={currentIndex}
-            onSelect={goToSlide}
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const ModalImage = ({
-  src,
-  alt,
-  pageNumber,
-}: {
-  src: string;
-  alt: string;
-  pageNumber?: number;
 }) => (
-  <div className="flex flex-col items-center">
-    {pageNumber && (
-      <div className="mb-2">
-        <span className="text-sm font-medium text-gray-600 bg-white px-3 py-1 rounded-full shadow-sm">
-          Page {pageNumber}
-        </span>
+  <section id="certifications-carousel" className="pb-16 sm:pb-20 lg:pb-24">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
+        {CERTIFICATIONS.map((certification, index) => (
+          <FadeInSection
+            key={certification.id}
+            delay={200 + index * 100}
+            duration={800}
+          >
+            <CertificationCard
+              certification={certification}
+              isActive={index === 0}
+              onClick={() => onOpenModal(certification)}
+            />
+          </FadeInSection>
+        ))}
       </div>
-    )}
-    <div className="flex items-center justify-center">
-      <Image
-        src={src}
-        alt={alt}
-        width={800}
-        height={600}
-        className="max-w-full max-h-64 sm:max-h-80 md:max-h-96 object-contain rounded-md shadow-md transition-all duration-300 hover:shadow-lg"
-        style={{
-          maxHeight: 'min(400px, 50vh)',
-        }}
-        priority
-        quality={90}
-        onError={(e) => {
-          const target = e.target as HTMLImageElement;
-          target.style.display = 'none';
-        }}
-      />
+    </div>
+  </section>
+);
+
+// Team Member Card
+const TeamMemberCard = ({ member }: { member: (typeof TEAM_MEMBERS)[0] }) => (
+  <div className="group text-center">
+    <div className="relative mb-3">
+      <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 ring-2 ring-primary/20 group-hover:ring-primary/40">
+        <Image
+          src={member.image}
+          alt={member.alt}
+          width={192}
+          height={192}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+    </div>
+
+    <div className="space-y-1">
+      <h4 className="text-base sm:text-lg font-bold text-card-foreground">
+        {member.name}
+      </h4>
+      <p className="text-primary font-semibold text-sm sm:text-base">
+        {member.position}
+      </p>
     </div>
   </div>
 );
 
+// Leadership Team Section
+const TeamSection = () => (
+  <section className="py-16 sm:py-20 lg:py-24 bg-card">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <FadeInSection delay={200} duration={800}>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-card-foreground">
+            Board of <span className="text-primary">Directors</span>
+          </h2>
+
+          <div className="w-20 h-1 bg-primary rounded-full mx-auto mt-4" />
+
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-6 leading-relaxed">
+            Meet the leaders guiding L&G Energy Corp. toward sustainable growth,
+            operational excellence, and long-term success.
+          </p>
+        </div>
+      </FadeInSection>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        {TEAM_MEMBERS.map((member, index) => (
+          <FadeInSection
+            key={member.name}
+            delay={300 + index * 100}
+            duration={800}
+          >
+            <TeamMemberCard member={member} />
+          </FadeInSection>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// Certification Modal
 const CertificationModal = ({
   certification,
   isOpen,
   onClose,
+  onChangeCertificate,
 }: {
   certification: Certification | null;
   isOpen: boolean;
   onClose: () => void;
+  onChangeCertificate: (certification: Certification) => void;
 }) => {
   if (!isOpen || !certification) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
+  const currentIndex = CERTIFICATIONS.findIndex(
+    (item) => item.id === certification.id
+  );
 
-      {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto my-4">
-        {/* Header */}
-        <div className="bg-primary p-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-            <h2 className="text-white font-semibold text-lg">
-              {certification.title}
-            </h2>
+  const handlePrevious = () => {
+    const previousIndex =
+      (currentIndex - 1 + CERTIFICATIONS.length) % CERTIFICATIONS.length;
+
+    onChangeCertificate(CERTIFICATIONS[previousIndex]);
+  };
+
+  const handleNext = () => {
+    const nextIndex = (currentIndex + 1) % CERTIFICATIONS.length;
+
+    onChangeCertificate(CERTIFICATIONS[nextIndex]);
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md">
+      {/* Close Button */}
+      <button
+        type="button"
+        onClick={onClose}
+        className="fixed top-4 right-4 z-[60] flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-800 shadow-lg transition-transform hover:scale-95 cursor-pointer"
+        aria-label="Close certificate viewer"
+      >
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2.5}
+            d="M6 6l12 12M18 6L6 18"
+          />
+        </svg>
+      </button>
+
+      {/* Previous Certificate */}
+      <button
+        type="button"
+        onClick={handlePrevious}
+        className="fixed left-4 top-1/2 z-[60] flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-gray-800 shadow-lg transition-transform hover:scale-95 sm:left-6 cursor-pointer"
+        aria-label="Previous certificate"
+      >
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 18l-6-6 6-6"
+          />
+        </svg>
+      </button>
+
+      {/* Next Certificate */}
+      <button
+        type="button"
+        onClick={handleNext}
+        className="fixed right-4 top-1/2 z-[60] flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-gray-800 shadow-lg transition-transform hover:scale-95 sm:right-6 cursor-pointer"
+        aria-label="Next certificate"
+      >
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 18l6-6-6-6"
+          />
+        </svg>
+      </button>
+
+      {/* Certificate and Caption */}
+      <div className="flex h-full w-full flex-col items-center justify-center overflow-y-auto px-14 py-16 sm:px-20">
+        <div className="flex min-h-0 flex-1 items-center justify-center">
+          <div className="relative flex max-h-full items-center justify-center">
+            <Image
+              src={certification.image}
+              alt={certification.title}
+              width={800}
+              height={1100}
+              priority
+              quality={95}
+              className="max-h-[75vh] max-w-full object-contain shadow-2xl"
+            />
           </div>
-          <button
-            onClick={onClose}
-            className="text-white hover:text-white/80 transition-colors"
-            aria-label="Close modal"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
         </div>
 
-        {/* Body */}
-        <div className="p-4 sm:p-6">
-          {/* Main Heading */}
-          <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">
-            Certificate Details
-          </h3>
-
-          {/* Description */}
-          <p className="text-gray-700 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-            {certification.description}
+        {/* Certificate Caption */}
+        <div className="mt-6 w-full shrink-0 text-center text-white">
+          <h4 className="text-xl font-bold mt-3">{certification.title}</h4>
+          <p className="inline-block text-sm font-semibold text-primary bg-primary/10 px-5 py-1 rounded-full mt-2">
+            {certification.category}
           </p>
-
-          {/* Image Container */}
-          <div className="mb-6 bg-gray-50 rounded-lg p-4">
-            <div className="space-y-4">
-              {certification.images && certification.images.length > 1 ? (
-                // Multiple images - show with page indicators
-                certification.images.map((image, index) => (
-                  <ModalImage
-                    key={index}
-                    src={image}
-                    alt={`${certification.title} - Page ${index + 1}`}
-                    pageNumber={index + 1}
-                  />
-                ))
-              ) : (
-                // Single image
-                <ModalImage
-                  src={certification.image}
-                  alt={certification.title}
-                />
-              )}
-            </div>
-          </div>
-
-          {/* Certificate Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
-            <div className="space-y-1 sm:space-y-2">
-              <div className="flex justify-between items-center py-1.5 sm:py-2 border-b border-gray-200">
-                <span className="text-gray-600 font-medium text-sm">
-                  Certificate No:
-                </span>
-                <span className="font-semibold text-gray-900 text-sm">
-                  {certification.certificateNumber}
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-1.5 sm:py-2 border-b border-gray-200">
-                <span className="text-gray-600 font-medium text-sm">
-                  Category:
-                </span>
-                <span className="font-semibold text-primary text-sm">
-                  {certification.category}
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-1.5 sm:py-2">
-                <span className="text-gray-600 font-medium text-sm">
-                  Issuing Authority:
-                </span>
-                <span className="font-semibold text-gray-900 text-sm">
-                  {certification.issuingAuthority}
-                </span>
-              </div>
-            </div>
-
-            <div className="space-y-1 sm:space-y-2">
-              <div className="flex justify-between items-center py-1.5 sm:py-2 border-b border-gray-200">
-                <span className="text-gray-600 font-medium text-sm">
-                  Issue Date:
-                </span>
-                <span className="font-semibold text-gray-900 text-sm">
-                  {certification.issueDate}
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-1.5 sm:py-2">
-                <span className="text-gray-600 font-medium text-sm">
-                  Expiry Date:
-                </span>
-                <span className="font-semibold text-gray-900 text-sm">
-                  {certification.expiryDate}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Status */}
-          <div className="flex items-center gap-2 mb-4 sm:mb-6">
-            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xs sm:text-sm font-semibold text-green-700">
-              Valid Certificate
-            </span>
-            <span className="text-xs text-gray-500">
-              • Active and in compliance
-            </span>
-          </div>
-
-          {/* Close Button */}
-          <div className="flex justify-end">
-            <button
-              onClick={onClose}
-              className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300 text-sm sm:text-base"
-            >
-              Close
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -664,34 +450,26 @@ export default function Certifications() {
   const {
     selectedCertification,
     isModalOpen,
-    isLoading,
     openModal,
     closeModal,
+    changeCertificate,
   } = useModal();
 
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection />
       <CompanyIntroduction />
-      <CertificationsCarousel onOpenModal={openModal} />
+
+      <CertificationsGrid onOpenModal={openModal} />
+
+      {/* Leadership team below the certificates */}
+      <TeamSection />
+
       <CertificationModal
         certification={selectedCertification}
         isOpen={isModalOpen}
         onClose={closeModal}
+        onChangeCertificate={changeCertificate}
       />
-      {/* Loading Overlay */}
-      {isLoading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-lg p-6 shadow-xl">
-            <div className="flex items-center space-x-3">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
-              <span className="text-gray-700 font-medium">
-                Loading certificate...
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

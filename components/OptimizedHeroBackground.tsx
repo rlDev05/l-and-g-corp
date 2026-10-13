@@ -38,12 +38,17 @@ export default function OptimizedHeroBackground({
       <div
         className="absolute inset-0 backdrop-blur-[2px]"
         style={{
-          backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})`,
+          background: `linear-gradient(
+            to bottom,
+              rgba(255, 255, 255, ${overlayOpacity}),
+              rgba(178, 126, 27, ${overlayOpacity}),
+              rgba(0, 0, 0, ${overlayOpacity})
+          )`,
         }}
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-black">
         {children}
       </div>
     </section>

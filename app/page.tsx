@@ -2,6 +2,14 @@
 
 import FadeInSection from '@/components/FadeInSection';
 import OptimizedHeroBackground from '@/components/OptimizedHeroBackground';
+import {
+  Award,
+  Gauge,
+  Handshake,
+  ShieldCheck,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
 import Image from 'next/image';
 import { useCallback } from 'react';
 
@@ -26,16 +34,15 @@ const HeroSection = () => {
     <OptimizedHeroBackground
       imagePath="/background/hero-bg.jpg"
       alt="L&G Energy Corp Hero Background"
-      overlayOpacity={0.4}
+      overlayOpacity={0.7}
     >
       <FadeInSection delay={200} duration={800}>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
-          Powering the Philippines&apos; <br className="hidden sm:block" />{' '}
-          Energy Future.
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight text-white">
+          Powering the Philippines&apos; Energy Future
         </h1>
       </FadeInSection>
       <FadeInSection delay={400} duration={800}>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4 text-justify text-white">
           L&G Energy Corp is an emerging Philippine energy trading company
           engaged in the import, export, and wholesale of fuel and gaseous
           products. Guided by innovation and commitment, we aim to become a
@@ -124,8 +131,15 @@ const CompanyProfileSection = () => (
         {/* Text Content */}
         <FadeInSection delay={200} duration={800}>
           <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
-            <SectionTitle title="Company" highlightedWord="Profile" />
+            <SectionTitle title="About" highlightedWord="Us" />
             <div className="space-y-4 text-muted-foreground">
+              <p className="text-sm sm:text-base leading-relaxed text-justify">
+                Established in 2025, we are a Philippine-based energy trading
+                company specializing in the import, export, and wholesale
+                distribution of fuel products and gaseous fuels. Our focus on
+                reliability, operational efficiency, and long-term partnerships
+                supports the energy demands of key industries.
+              </p>
               <p className="text-sm sm:text-base leading-relaxed text-justify">
                 L&G Energy Corp is a Philippine-based energy trading company
                 established in 2025. We specialize in the import, export, and
@@ -140,8 +154,8 @@ const CompanyProfileSection = () => (
                 across the country and are continuously expanding our network of
                 storage, logistics, and distribution channels. Backed by a team
                 of experienced professionals and a growing base of satisfied
-                clients, L&G Energy Corp strives to become a trusted partner in
-                the Philippine energy sector.
+                clients, L&G Energy Corporation strives to become a trusted
+                partner in the Philippine energy sector.
               </p>
             </div>
           </div>
@@ -167,25 +181,148 @@ const AboutUsSection = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
         {/* Image */}
-        <FadeInSection delay={400} duration={800}>
-          <CompanyImage
-            src="/logo/l-and-g-corp-logo.jpg"
-            alt="L&G Energy Operations"
-            className="order-2 lg:order-1"
-          />
-        </FadeInSection>
 
         {/* Text Content */}
         <FadeInSection delay={200} duration={800}>
           <div className="space-y-4 sm:space-y-6 order-1 lg:order-2 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
-            <SectionTitle title="About" highlightedWord="L&G Energy" />
+            <SectionTitle title="Core" highlightedWord="Values" />
+
             <div className="space-y-4 sm:space-y-6 text-muted-foreground text-justify">
               <p className="text-sm sm:text-base leading-relaxed">
-                Established in 2025, we are a Philippine-based energy trading
-                company specializing in the import, export, and wholesale
-                distribution of fuel products and gaseous fuels. Our focus on
-                reliability, operational efficiency, and long-term partnerships
-                supports the energy demands of key industries.
+                At L&amp;G Energy Corporation, our core values guide our
+                decisions, shape our operations, and define our commitment to
+                delivering reliable fuel and logistics solutions.
+              </p>
+
+              <div className="space-y-5">
+                <div className="flex items-start gap-3">
+                  <div className="border-1 p-2 rounded-lg bg-gradient-to-br from-black to-[#b27e1b]">
+                    <ShieldCheck className="mt-1 h-6 w-6 shrink-0 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-2xl text-foreground uppercase mb-3 mt-2">
+                      Reliability
+                    </h4>
+                    <p className="text-sm sm:text-base leading-relaxed">
+                      We are committed to dependable service, timely deliveries,
+                      and consistent operational performance, ensuring our
+                      clients and partners can rely on us to meet their fuel and
+                      logistics needs.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="border-1 p-2 rounded-lg bg-gradient-to-br from-black to-[#b27e1b]">
+                    <Award className="mt-1 h-6 w-6 shrink-0 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-2xl text-foreground uppercase mb-3 mt-2">
+                      Excellence
+                    </h4>
+                    <p className="text-sm sm:text-base leading-relaxed">
+                      We pursue the highest standards in our products, services,
+                      and operations through continuous improvement,
+                      professional competence, and adherence to industry best
+                      practices.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="border-1 p-2 rounded-lg bg-gradient-to-br from-black to-[#b27e1b]">
+                    <Handshake className="mt-1 h-6 w-6 shrink-0 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-2xl text-foreground uppercase mb-3 mt-2">
+                      Integrity
+                    </h4>
+                    <p className="text-sm sm:text-base leading-relaxed">
+                      We conduct our business with honesty, transparency,
+                      accountability, and fairness, building lasting
+                      relationships through ethical decisions and responsible
+                      business practices.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="border-1 p-2 rounded-lg bg-gradient-to-br from-black to-[#b27e1b]">
+                    <Gauge className="mt-1 h-6 w-6 shrink-0 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-2xl text-foreground uppercase mb-3 mt-2">
+                      Efficiency
+                    </h4>
+                    <p className="text-sm sm:text-base leading-relaxed">
+                      We optimize our resources, strengthen our operational
+                      systems, and streamline our logistics processes to deliver
+                      timely, cost-effective, and high-quality solutions.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="border-1 p-2 rounded-lg bg-gradient-to-br from-black to-[#b27e1b]">
+                    <Users className="mt-1 h-6 w-6 shrink-0 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-2xl text-foreground uppercase mb-3 mt-2">
+                      Partnership
+                    </h4>
+                    <p className="text-sm sm:text-base leading-relaxed">
+                      We value the trust and cooperation of our clients,
+                      suppliers, and business partners, fostering strong
+                      relationships built on mutual respect, shared goals, and
+                      dependable service.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="border-1 p-2 rounded-lg bg-gradient-to-br from-black to-[#b27e1b]">
+                    <TrendingUp className="mt-1 h-6 w-6 shrink-0 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-2xl text-foreground uppercase mb-3 mt-2">
+                      Sustainable Growth
+                    </h4>
+                    <p className="text-sm sm:text-base leading-relaxed">
+                      We pursue long-term profitability and national and
+                      international competitiveness through sound management,
+                      responsible business decisions, and continuous
+                      development.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeInSection>
+        <FadeInSection delay={400} duration={800}>
+          <div className="space-y-4 sm:space-y-6 order-1 lg:order-2 mx-auto lg:mx-0 text-center lg:text-left border-1 p-8 rounded-xl shadow-lg mb-9 bg-gradient-to-br from-black to-[#b27e1b]">
+            <SectionTitle title="" highlightedWord="Our Mission" />
+            <div className="space-y-4 sm:space-y-6 text-muted-foreground text-justify">
+              <p className="text-sm sm:text-base leading-relaxed text-white">
+                L&G Energy Corp aims to become a nationally recognized company
+                with the capability to compete at the international level —
+                known for its reliability and excellence in providing logistics
+                and fuel oil solutions. Through reliable land and sea logistics,
+                L&G Energy Corp ensures timely and efficient delivery, supported
+                by a well-structured and dependable operational system — earning
+                the trust of partners and clients across all markets we serve.
+              </p>
+            </div>
+          </div>
+          <div className="space-y-4 sm:space-y-6 order-1 lg:order-2 mx-auto lg:mx-0 text-center lg:text-left border-1 p-8 rounded-xl shadow-lg bg-gradient-to-br from-black to-[#b27e1b]">
+            <SectionTitle title="" highlightedWord="Our Vision" />
+            <div className="space-y-4 sm:space-y-6 text-muted-foreground text-justify">
+              <p className="text-sm sm:text-base leading-relaxed text-white">
+                We envision a company that is both nationally and globally
+                competitive, achieving sustainable income and profitability,
+                backed by strong management that upholds global standards and
+                best practices. Our operations are built on quality, efficiency,
+                and integrity.
               </p>
             </div>
           </div>
